@@ -5,6 +5,7 @@ SRCS_DIR = ./srcs
 OBJS_DIR = ./objs
 
 SRCS_FILES = main.c \
+	create_philos.c \
 	init_philos.c \
 	set_philo_value.c \
 	check_input.c \

@@ -36,6 +36,8 @@ typedef struct s_philo
 int		check_input(int argc, char *argv[]);
 int		nonnegative_atoi(const char *s);
 int		validate_pthread_count(int n_philos);
+
+t_philo	*create_philos(int n_philos);
 t_philo	*init_philos(t_philo philos[], int n_philos);
 int		set_philo_value(t_philo *philo, int	philo_id);
 

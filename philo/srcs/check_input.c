@@ -28,7 +28,7 @@ int	check_input(int argc, char *argv[])
 	else if (errno == ERANGE)
 		return (put_err_ret(FAILURE, "Error: Overflow detected for integer"));
 	// スレッドを回数分作れるか？
-	if (validate_pthread_count(n_philos) == ERROR)
-		return (put_err_ret(FAILURE, "Error: Failed to create thread"));
+//	if (validate_pthread_count(n_philos) == ERROR)
+//		return (put_err_ret(FAILURE, "Error: Failed to create thread"));
 	return (SUCCESS);
 }
