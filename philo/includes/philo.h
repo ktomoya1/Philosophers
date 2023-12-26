@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2023/12/08 15:24:34 by ktomoya          ###   ########.fr       */
+/*   Updated: 2023/12/26 19:42:36 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # include <limits.h>
 # include <errno.h>
 
-# define PHILO_MAXSIZE 1
+# define PHILO_MAXSIZE 20
+# define USLEEP_MAX 1000000
 
 # define SUCCESS 0
 # define FAILURE 1
@@ -34,12 +35,18 @@ typedef struct s_philo
 }	t_philo;
 
 int		check_input(int argc, char *argv[]);
+int		check_num_of_philos(int *n_philos, const char *s);
+int		check_time_to_die(useconds_t *time_to_die, const char *s);
 int		nonnegative_atoi(const char *s);
 int		validate_pthread_count(int n_philos);
 
-t_philo	*create_philos(int n_philos);
-t_philo	*init_philos(t_philo philos[], int n_philos);
-int		set_philo_value(t_philo *philo, int	philo_id);
+int		create_philos(pthread_t philos[], int n_philos);
+void	init_philos(pthread_t philos[], int n_philos);
+int		set_philo_value(t_philo *philo, int philo_id);
+int		destroy_philos(pthread_t philos[]);
+
+long	gettime_in_ms(void);
+void	*think(void *arg);
 
 void	put_syserr(int errnum, const char *format);
 void	put_error(const char *format);

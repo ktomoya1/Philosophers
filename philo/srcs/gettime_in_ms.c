@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   think.c                                            :+:      :+:    :+:   */
+/*   gettime_in_ms.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 13:02:32 by ktomoya           #+#    #+#             */
-/*   Updated: 2023/12/26 17:54:26 by ktomoya          ###   ########.fr       */
+/*   Created: 2023/12/25 12:54:57 by ktomoya           #+#    #+#             */
+/*   Updated: 2023/12/26 16:27:53 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*think(void *arg)
+long	gettime_in_ms(void)
 {
-	int				philo_id;
+	long			ms_time;
+	struct timeval	tv;
 
-	philo_id = *(int *)arg;
-	printf("%ld %d is thinking\n", gettime_in_ms(), philo_id + 1);
-	return ((void *)0);
+	gettimeofday(&tv, NULL);
+	ms_time = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+	return (ms_time);
 }

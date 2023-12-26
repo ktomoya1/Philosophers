@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   think.c                                            :+:      :+:    :+:   */
+/*   destroy_philos.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 13:02:32 by ktomoya           #+#    #+#             */
-/*   Updated: 2023/12/26 17:54:26 by ktomoya          ###   ########.fr       */
+/*   Created: 2023/12/25 15:13:38 by ktomoya           #+#    #+#             */
+/*   Updated: 2023/12/25 15:40:40 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*think(void *arg)
+int	destroy_philos(pthread_t philos[])
 {
-	int				philo_id;
+	int	err;
+	int	i;
 
-	philo_id = *(int *)arg;
-	printf("%ld %d is thinking\n", gettime_in_ms(), philo_id + 1);
-	return ((void *)0);
+	i = 0;
+	while (philos[i] != NULL)
+	{
+		err = pthread_join(philos[i], NULL);
+		if (err != SUCCESS)
+			return (put_err_ret(ERROR, "can't join with thread"));
+		i++;
+	}
+	return (SUCCESS);
 }
