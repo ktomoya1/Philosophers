@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/08 15:21:56 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:49:09 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ typedef struct s_philo
 }	t_philo;
 
 int		validate_input(int argc, char *argv[]);
-int		check_num_of_philos(int *n_philos, const char *s);
-int		check_time_to_die(useconds_t *time_to_die, const char *s);
 int		nonnegative_atoi(const char *s);
 int		validate_pthread_count(int n_philos);
 

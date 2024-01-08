@@ -6,13 +6,12 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:36:25 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/08 15:28:36 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:49:49 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// idとtime_to_dieのチェック
 int	validate_input(int argc, char *argv[])
 {
 	if (argc != 3)

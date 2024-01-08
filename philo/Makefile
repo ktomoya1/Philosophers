@@ -11,7 +11,6 @@ SRCS_FILES = main.c \
 	set_philo_value.c \
 	validate_input.c \
 	has_nondigits.c \
-	check_num_of_philos.c \
 	nonnegative_atoi.c \
 	put_error.c \
 	put_err_ret.c \
@@ -22,7 +21,6 @@ SRCS_FILES = main.c \
 	ft_atoi.c \
 	gettime_in_ms.c \
 	think.c \
-	check_time_to_die.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 OBJS = $(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
