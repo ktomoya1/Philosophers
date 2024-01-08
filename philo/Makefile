@@ -7,6 +7,7 @@ OBJS_DIR = ./objs
 SRCS_FILES = main.c \
 	create_philos.c \
 	init_philos.c \
+	setup_philo.c \
 	destroy_philos.c \
 	set_philo_value.c \
 	validate_input.c \

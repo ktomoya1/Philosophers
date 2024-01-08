@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:45:21 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/08 14:02:24 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/08 16:15:58 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,11 @@
 // 哲学者に餓死する機能をつける
 int	main(int argc, char *argv[])
 {
+	t_philo	philos[PHILO_MAX];
 	// 入力チェック
 	if (validate_input(argc, argv) != SUCCESS)
 		return (FAILURE);
+	setup_philo(philos, argv);
 	// 哲学者の構造体に値を設定する
 	// スレッドを作成する
 	// if スレッドの死を検知したら
