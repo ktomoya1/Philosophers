@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 10:13:27 by ktomoya           #+#    #+#             */
-/*   Updated: 2023/12/26 19:57:15 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/06 19:48:13 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	nonnegative_atoi(const char *s)
 {
 	int	num;
 
+	errno = 0;
 	num = 0;
 	while (ft_isspace(*s))
 		s++;

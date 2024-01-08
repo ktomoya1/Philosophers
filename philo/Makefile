@@ -9,7 +9,8 @@ SRCS_FILES = main.c \
 	init_philos.c \
 	destroy_philos.c \
 	set_philo_value.c \
-	check_input.c \
+	validate_input.c \
+	has_nondigits.c \
 	check_num_of_philos.c \
 	nonnegative_atoi.c \
 	put_error.c \
@@ -18,6 +19,7 @@ SRCS_FILES = main.c \
 	ft_isspace.c \
 	ft_isdigit.c \
 	ft_strlen.c \
+	ft_atoi.c \
 	gettime_in_ms.c \
 	think.c \
 	check_time_to_die.c \
