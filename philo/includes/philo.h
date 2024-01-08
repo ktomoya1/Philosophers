@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/08 16:20:45 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/08 16:49:29 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,17 @@ typedef struct s_philo
 }	t_philo;
 
 int		validate_input(int argc, char *argv[]);
-int		nonnegative_atoi(const char *s);
-int		validate_pthread_count(int n_philos);
-
 bool	has_nondigits(const char *s);
 
 int		create_philos(pthread_t philos[], int n_philos);
-void	init_philos(pthread_t philos[], int n_philos);
 int		setup_philo(t_philo philos[], char *argv[]);
-int		set_philo_value(t_philo *philo, int philo_id);
 int		destroy_philos(pthread_t philos[]);
 
 long	gettime_in_ms(void);
 void	*think(void *arg);
 
-void	put_syserr(int errnum, const char *format);
 void	put_error(const char *format);
 int		put_err_ret(int error_code, const char *format);
-int		set_errno_ret(int error_code, int errno_num);
 
 int		ft_isspace(int c);
 int		ft_isdigit(int c);

@@ -6,16 +6,12 @@ OBJS_DIR = ./objs
 
 SRCS_FILES = main.c \
 	create_philos.c \
-	init_philos.c \
 	setup_philo.c \
 	destroy_philos.c \
-	set_philo_value.c \
 	validate_input.c \
 	has_nondigits.c \
-	nonnegative_atoi.c \
 	put_error.c \
 	put_err_ret.c \
-	set_errno_ret.c \
 	ft_isspace.c \
 	ft_isdigit.c \
 	ft_strlen.c \
