@@ -5,9 +5,9 @@ SRCS_DIR = ./srcs
 OBJS_DIR = ./objs
 
 SRCS_FILES = main.c \
-	create_philos.c \
+	create_thread.c \
 	setup_philo.c \
-	destroy_philos.c \
+	wait_thread.c \
 	validate_input.c \
 	has_nondigits.c \
 	put_error.c \

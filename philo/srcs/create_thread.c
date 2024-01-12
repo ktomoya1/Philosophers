@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_philos.c                                    :+:      :+:    :+:   */
+/*   create_thread.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 22:10:58 by ktomoya           #+#    #+#             */
-/*   Updated: 2023/12/26 17:55:35 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/10 18:58:24 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	create_philos(pthread_t philos[], int n_philos)
+int	create_thread(pthread_t threads[], t_philo philos[], int philo_count)
 {
-	int	i;
 	int	err;
+	int	i;
 
 	i = 0;
-	while (i < n_philos)
+	while (i < philo_count)
 	{
-		err = pthread_create(&philos[i], NULL, think, &i);
-		usleep(20);
+		err = pthread_create(&threads[i], NULL, think, (void *)&philos[i]);
 		if (err != SUCCESS)
 			return (ERROR);
 		i++;

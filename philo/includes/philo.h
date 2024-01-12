@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/08 16:49:29 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/12 20:39:40 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,16 @@
 typedef struct s_philo
 {
 	int			id;
-	useconds_t	time_to_die;	
+	useconds_t	time_to_die;
+	bool		*is_dead;
 }	t_philo;
 
 int		validate_input(int argc, char *argv[]);
 bool	has_nondigits(const char *s);
 
-int		create_philos(pthread_t philos[], int n_philos);
-int		setup_philo(t_philo philos[], char *argv[]);
-int		destroy_philos(pthread_t philos[]);
+int		create_thread(pthread_t threads[], t_philo philos[], int philo_count);
+int		setup_philo(t_philo philos[], char *argv[], int philo_count);
+int		wait_thread(pthread_t threads[]);
 
 long	gettime_in_ms(void);
 void	*think(void *arg);

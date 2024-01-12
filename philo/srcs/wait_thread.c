@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_philos.c                                   :+:      :+:    :+:   */
+/*   wait_thread.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/25 15:13:38 by ktomoya           #+#    #+#             */
-/*   Updated: 2023/12/25 15:40:40 by ktomoya          ###   ########.fr       */
+/*   Created: 2024/01/08 19:16:21 by ktomoya           #+#    #+#             */
+/*   Updated: 2024/01/09 15:02:08 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	destroy_philos(pthread_t philos[])
+int	wait_thread(pthread_t threads[])
 {
-	int	err;
 	int	i;
 
 	i = 0;
-	while (philos[i] != NULL)
+	while (threads[i] != NULL)
 	{
-		err = pthread_join(philos[i], NULL);
-		if (err != SUCCESS)
-			return (put_err_ret(ERROR, "can't join with thread"));
+		pthread_join(threads[i], NULL);
 		i++;
 	}
 	return (SUCCESS);
