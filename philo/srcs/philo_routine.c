@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   think.c                                            :+:      :+:    :+:   */
+/*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
+/*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 19:32:15 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/13 19:39:50 by ktomoya          ###   ########.fr       */
+/*   Created: 2023/12/01 13:02:32 by ktomoya           #+#    #+#             */
+/*   Updated: 2024/01/13 19:50:08 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	think(t_philo *philo)
+void	*philo_routine(void *arg)
 {
-	if (philo->shared->is_dead == true)
-		return ;
-	printf("%ld %d is thinking\n", gettime_in_ms(), philo->id);
-	usleep(philo->time_to_die);
+	t_philo	*philo;
+
+	philo = (t_philo *)arg;
+	think(philo);
+	take_left_fork(philo);
+	die(philo);
+	return ((void *)1);
 }

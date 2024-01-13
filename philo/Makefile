@@ -6,7 +6,8 @@ OBJS_DIR = ./objs
 
 SRCS_FILES = main.c \
 	create_thread.c \
-	setup_philo.c \
+	setup_shared_data.c \
+	init_philo.c \
 	wait_thread.c \
 	validate_input.c \
 	has_nondigits.c \
@@ -17,7 +18,10 @@ SRCS_FILES = main.c \
 	ft_strlen.c \
 	ft_atoi.c \
 	gettime_in_ms.c \
+	philo_routine.c \
 	think.c \
+	take_left_fork.c \
+	die.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 OBJS = $(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)

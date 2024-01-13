@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup_philo.c                                      :+:      :+:    :+:   */
+/*   setup_shared_data.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 16:02:08 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/12 19:52:55 by ktomoya          ###   ########.fr       */
+/*   Created: 2024/01/13 16:19:56 by ktomoya           #+#    #+#             */
+/*   Updated: 2024/01/13 17:39:24 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	setup_philo(t_philo philos[], char *argv[], int philo_count)
+int	setup_shared_data(t_shared_data **shared, int size)
 {
-	useconds_t	time_to_die;
-	bool		*is_dead;
-	int			i;
-
-	time_to_die = ft_atoi(argv[2]);
-	is_dead = (bool *)malloc(sizeof(bool));
-	if (is_dead == NULL)
+	*shared = (t_shared_data *)malloc(sizeof(t_shared_data));
+	if (*shared == NULL)
 		return (ERROR);
-	*is_dead = false;
-	i = 0;
-	while (i < philo_count)
-	{
-		philos[i].id = i + 1;
-		philos[i].time_to_die = time_to_die;
-		philos[i].is_dead = is_dead;
-		i++;
-	}
+	shared[0]->is_dead = false;
+	memset(shared[0]->fork, true, sizeof(bool) * size);
 	return (SUCCESS);
 }
