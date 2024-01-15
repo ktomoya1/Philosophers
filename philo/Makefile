@@ -20,7 +20,7 @@ SRCS_FILES = main.c \
 	gettime_in_ms.c \
 	philo_routine.c \
 	think.c \
-	take_left_fork.c \
+	take_a_fork.c \
 	die.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
