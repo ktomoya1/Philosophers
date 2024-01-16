@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/15 18:23:40 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/15 20:16:57 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_philo
 	int				id;
 	int				forks_in_hand;
 	useconds_t		time_to_die;
+	useconds_t		time_to_eat;
 	t_shared_data	*shared;
 }	t_philo;
 
@@ -57,6 +58,7 @@ long			gettime_in_ms(void);
 void			*philo_routine(void *arg);
 void			think(t_philo *philo);
 void			take_a_fork(t_philo *philo);
+void			eat(t_philo *philo);
 void			die(t_philo *philo);
 
 void			put_error(const char *format);

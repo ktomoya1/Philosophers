@@ -21,6 +21,7 @@ SRCS_FILES = main.c \
 	philo_routine.c \
 	think.c \
 	take_a_fork.c \
+	eat.c \
 	die.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))

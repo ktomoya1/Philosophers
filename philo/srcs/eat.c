@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_philo.c                                       :+:      :+:    :+:   */
+/*   eat.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 16:02:08 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/15 20:19:38 by ktomoya          ###   ########.fr       */
+/*   Created: 2024/01/15 18:58:36 by ktomoya           #+#    #+#             */
+/*   Updated: 2024/01/15 20:22:53 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	init_philo(t_philo philos[], char *argv[], t_shared_data *shared)
+void	eat(t_philo *philo)
 {
-	int			i;
-
-	i = 0;
-	while (i < shared->num_of_philos)
-	{
-		philos[i].id = i + 1;
-		philos[i].forks_in_hand = 0;
-		philos[i].time_to_die = ft_atoi(argv[2]);
-		philos[i].time_to_eat = ft_atoi(argv[3]);
-		philos[i].shared = shared;
-		i++;
-	}
+	if (philo->forks_in_hand != 2)
+		return ;
+	if (philo->shared->is_dead == true)
+		return ;
+	printf("%ld %d is eating\n", gettime_in_ms(), philo->id);
+	usleep(philo->time_to_eat);
 }
