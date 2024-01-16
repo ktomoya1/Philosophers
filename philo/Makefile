@@ -24,6 +24,7 @@ SRCS_FILES = main.c \
 	take_a_fork.c \
 	take_forks.c \
 	eat.c \
+	release_fork.c \
 	die.c \
 	print_message.c \
 

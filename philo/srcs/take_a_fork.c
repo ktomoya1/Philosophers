@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:33:55 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/16 20:06:55 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/16 21:38:16 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	take_a_fork(t_philo *philo, int fork_id)
 {
-	pthread_mutex_lock(&philo->shared->forks[fork_id]);
+	if (philo->forks_in_hand == 0)
+		pthread_mutex_lock(philo->left_fork);
+	else if (philo->forks_in_hand == 1)
+		pthread_mutex_lock(philo->right_fork);
 	philo->forks_in_hand++;
 	if (philo->shared->is_dead == false)
 		printf("%ld %d has taken a %d fork\n", gettime_in_ms(), philo->id, fork_id);

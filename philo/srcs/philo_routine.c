@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:02:32 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/16 18:06:26 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/16 21:17:31 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	*philo_routine(void *arg)
 	philo = (t_philo *)arg;
 	take_forks(philo);
 	eat(philo);
+	release_fork(philo);
 	think(philo);
 	die(philo);
 	return ((void *)1);
