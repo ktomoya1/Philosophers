@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/16 14:14:15 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/16 20:00:07 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@
 
 typedef struct s_shared_data
 {
-	int		num_of_philos;
-	bool	is_dead;
-	bool	fork[PHILO_MAX];
+	int				num_of_philos;
+	bool			is_dead;
+	pthread_mutex_t	forks[PHILO_MAX];
 }	t_shared_data;
 
 typedef struct s_philo
@@ -57,7 +57,9 @@ int				wait_thread(pthread_t threads[]);
 long			gettime_in_ms(void);
 void			*philo_routine(void *arg);
 void			think(t_philo *philo);
-void			take_a_fork(t_philo *philo);
+int				assign_fork_id(t_philo *philo);
+void			take_a_fork(t_philo *philo, int fork_id);
+void			take_forks(t_philo *philo);
 void			eat(t_philo *philo);
 void			die(t_philo *philo);
 void			print_message(t_philo *philo, const char *msg);

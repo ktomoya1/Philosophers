@@ -20,7 +20,9 @@ SRCS_FILES = main.c \
 	gettime_in_ms.c \
 	philo_routine.c \
 	think.c \
+	assign_fork_id.c \
 	take_a_fork.c \
+	take_forks.c \
 	eat.c \
 	die.c \
 	print_message.c \
