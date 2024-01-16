@@ -23,6 +23,7 @@ SRCS_FILES = main.c \
 	take_a_fork.c \
 	eat.c \
 	die.c \
+	print_message.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 OBJS = $(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)

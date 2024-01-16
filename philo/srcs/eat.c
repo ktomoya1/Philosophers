@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:58:36 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/15 20:22:53 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/16 14:19:51 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ void	eat(t_philo *philo)
 {
 	if (philo->forks_in_hand != 2)
 		return ;
-	if (philo->shared->is_dead == true)
-		return ;
-	printf("%ld %d is eating\n", gettime_in_ms(), philo->id);
+//	if (philo->shared->is_dead == true)
+//		return ;
+//	printf("%ld %d is eating\n", gettime_in_ms(), philo->id);
+	print_message(philo, "is eating");
 	usleep(philo->time_to_eat);
 }

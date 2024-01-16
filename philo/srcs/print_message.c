@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   think.c                                            :+:      :+:    :+:   */
+/*   print_message.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 19:32:15 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/16 14:16:16 by ktomoya          ###   ########.fr       */
+/*   Created: 2024/01/16 14:08:56 by ktomoya           #+#    #+#             */
+/*   Updated: 2024/01/16 14:13:29 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	think(t_philo *philo)
+void	print_message(t_philo *philo, const char *msg)
 {
-//	if (philo->shared->is_dead == true)
-//		return ;
-	print_message(philo, "is thinking");
-//	printf("%ld %d is thinking\n", gettime_in_ms(), philo->id);
-	usleep(philo->time_to_die);
+	if (philo->shared->is_dead == true)
+		return ;
+	printf("%ld %d %s\n", gettime_in_ms(), philo->id, msg);
 }
