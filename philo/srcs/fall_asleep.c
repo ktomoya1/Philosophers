@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_routine.c                                    :+:      :+:    :+:   */
+/*   fall_asleep.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 13:02:32 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/17 15:47:58 by ktomoya          ###   ########.fr       */
+/*   Created: 2024/01/17 15:39:56 by ktomoya           #+#    #+#             */
+/*   Updated: 2024/01/17 15:45:32 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*philo_routine(void *arg)
+void	fall_asleep(t_philo *philo)
 {
-	t_philo	*philo;
-
-	philo = (t_philo *)arg;
-	take_forks(philo);
-	eat(philo);
-	release_fork(philo);
-	fall_asleep(philo);
-	think(philo);
-	die(philo);
-	return ((void *)1);
+	print_message(philo, "is sleeping");
+	usleep(philo->time_to_sleep);
 }
