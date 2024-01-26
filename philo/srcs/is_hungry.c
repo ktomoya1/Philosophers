@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_routine.c                                    :+:      :+:    :+:   */
+/*   is_hungry.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 13:02:32 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/17 19:19:10 by ktomoya          ###   ########.fr       */
+/*   Created: 2024/01/17 19:27:52 by ktomoya           #+#    #+#             */
+/*   Updated: 2024/01/17 19:35:46 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*philo_routine(void *arg)
+bool	is_hungry(t_philo *philo)
 {
-	t_philo	*philo;
+	useconds_t	elapsed_time;
 
-	philo = (t_philo *)arg;
-	while (philo->shared->is_dead == false)
-	{
-		take_forks(philo);
-		eat(philo);
-		release_fork(philo);
-		fall_asleep(philo);
-		think(philo);
-	}
-	die(philo);
-	return ((void *)1);
+	elapsed_time = gettime_in_ms() - philo->start_time;
+	if (elapsed_time > philo->time_to_die)
+		return (true);
+	return (false);
 }

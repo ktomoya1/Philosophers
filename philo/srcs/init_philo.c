@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:02:08 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/17 15:50:04 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/17 19:40:05 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_philo(t_philo philos[], char *argv[], t_shared_data *shared)
 		philos[i].forks_in_hand = 0;
 		philos[i].right_fork = NULL;
 		philos[i].left_fork = NULL;
+		philos[i].start_time = 0;
 		philos[i].time_to_die = ft_atoi(argv[2]);
 		philos[i].time_to_eat = ft_atoi(argv[3]);
 		philos[i].time_to_sleep = ft_atoi(argv[4]);
