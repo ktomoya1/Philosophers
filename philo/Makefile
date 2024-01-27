@@ -53,10 +53,10 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-	$(RM) $(RMFLAGS) $(OBJS_DIR)
+	rm $(RMFLAGS) $(OBJS_DIR)
 
 fclean: clean
-	$(RM) $(RMFLAGS) $(NAME)
+	rm $(RMFLAGS) $(NAME)
 
 re: fclean all
 
