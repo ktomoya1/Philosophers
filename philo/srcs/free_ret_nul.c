@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   die.c                                              :+:      :+:    :+:   */
+/*   free_ret_nul.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
+/*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 19:40:46 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/26 15:26:09 by ktomoya          ###   ########.fr       */
+/*   Created: 2024/01/26 15:06:11 by ktomoya           #+#    #+#             */
+/*   Updated: 2024/01/26 15:07:12 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	die(t_philo *philo)
+void	*free_ret_nul(void *ptr)
 {
-	if (philo->shared->death_flag == true)
-		return ;
-	philo->shared->death_flag = true;
-	printf("%ld %d has died\n", gettime_in_ms(), philo->id);
+	if (ptr != NULL)
+		free(ptr);
+	return (NULL);
 }

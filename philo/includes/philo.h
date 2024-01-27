@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/17 19:39:14 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/26 15:28:02 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@
 typedef struct s_shared_data
 {
 	int				num_of_philos;
-	bool			is_dead;
+	bool			death_flag;
+	pthread_mutex_t	death_mutex;
 	pthread_mutex_t	forks[PHILO_MAX];
 }	t_shared_data;
 
@@ -73,6 +74,7 @@ void			print_message(t_philo *philo, const char *msg);
 
 void			put_error(const char *format);
 int				put_err_ret(int error_code, const char *format);
+void			*free_ret_nul(void *ptr);
 
 int				ft_isspace(int c);
 int				ft_isdigit(int c);

@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:33:55 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/17 16:50:41 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/26 15:26:56 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	take_a_fork(t_philo *philo, int fork_id)
 			pthread_mutex_lock(philo->right_fork);
 	}
 	philo->forks_in_hand++;
-	if (philo->shared->is_dead == false)
+	if (philo->shared->death_flag == false)
 		printf("%ld %d has taken a %d fork\n", gettime_in_ms(), philo->id, fork_id);
 }

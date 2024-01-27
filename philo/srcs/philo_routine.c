@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:02:32 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/17 19:19:10 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/26 15:26:19 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*philo_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	while (philo->shared->is_dead == false)
+	while (philo->shared->death_flag == false)
 	{
 		take_forks(philo);
 		eat(philo);
