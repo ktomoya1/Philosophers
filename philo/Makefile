@@ -29,13 +29,14 @@ SRCS_FILES = main.c \
 	is_hungry.c \
 	die.c \
 	print_message.c \
+	free_ret_nul.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 OBJS = $(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR)
-DEBUGFLAGS = -g3 -fsanitize=address -O0
+DEBUGFLAGS = -g -fsanitize=thread
 RMFLAGS = -rf
 
 all: $(OBJS_DIR) $(NAME)
