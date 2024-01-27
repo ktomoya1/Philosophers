@@ -27,6 +27,7 @@ SRCS_FILES = main.c \
 	release_fork.c \
 	fall_asleep.c \
 	is_hungry.c \
+	is_dead.c \
 	die.c \
 	print_message.c \
 	free_ret_nul.c \

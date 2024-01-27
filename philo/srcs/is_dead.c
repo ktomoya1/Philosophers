@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_routine.c                                    :+:      :+:    :+:   */
+/*   is_dead.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 13:02:32 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/27 15:26:19 by ktomoya          ###   ########.fr       */
+/*   Created: 2024/01/27 15:02:58 by ktomoya           #+#    #+#             */
+/*   Updated: 2024/01/27 15:09:26 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*philo_routine(void *arg)
+bool	is_dead(t_philo *philo)
 {
-	t_philo	*philo;
+	bool	is_dead;
 
-	philo = (t_philo *)arg;
-	while (is_dead(philo) == false)
-	{
-		take_forks(philo);
-		eat(philo);
-		release_fork(philo);
-		fall_asleep(philo);
-		think(philo);
-	}
-	die(philo);
-	return ((void *)1);
+	pthread_mutex_lock(&philo->shared->death_mutex);
+	if (philo->shared->death_flag == true)
+		is_dead = true;
+	else
+		is_dead = false;
+	pthread_mutex_unlock(&philo->shared->death_mutex);
+	return (is_dead);
 }
