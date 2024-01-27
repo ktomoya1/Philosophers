@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/28 06:50:00 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/28 07:24:59 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ int				wait_thread(pthread_t threads[]);
 long			gettime_in_ms(void);
 void			*philo_routine(void *arg);
 void			think(t_philo *philo);
-int				assign_fork_id(t_philo *philo);
-void			take_a_fork(t_philo *philo, int fork_id);
+void			assign_fork_id(t_philo *philo);
+void			take_a_fork(t_philo *philo);
 void			take_forks(t_philo *philo);
 void			eat(t_philo *philo);
 void			release_fork(t_philo *philo);
