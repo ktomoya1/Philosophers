@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/27 15:10:15 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/28 06:50:00 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,12 @@ typedef struct s_philo
 	int				forks_in_hand;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*left_fork;
+	int				meal_count;
 	useconds_t		start_time;
 	useconds_t		time_to_die;
 	useconds_t		time_to_eat;
 	useconds_t		time_to_sleep;
+	int				minimum_meal_count;
 	t_shared_data	*shared;
 }	t_philo;
 
@@ -71,6 +73,7 @@ void			fall_asleep(t_philo *philo);
 bool			is_hungry(t_philo *philo);
 bool			is_dead(t_philo *philo);
 void			die(t_philo *philo);
+bool			has_eaten(t_philo *philo);
 void			print_message(t_philo *philo, const char *msg);
 
 void			put_error(const char *format);

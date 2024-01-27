@@ -29,6 +29,7 @@ SRCS_FILES = main.c \
 	is_hungry.c \
 	is_dead.c \
 	die.c \
+	has_eaten.c \
 	print_message.c \
 	free_ret_nul.c \
 
