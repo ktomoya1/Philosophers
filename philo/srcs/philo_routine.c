@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:02:32 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/27 15:26:19 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/27 16:47:33 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,5 @@ void	*philo_routine(void *arg)
 		fall_asleep(philo);
 		think(philo);
 	}
-	die(philo);
 	return ((void *)1);
 }
