@@ -6,13 +6,12 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:45:21 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/16 21:12:58 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/28 09:33:47 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// 哲学者一人が食事をとるプログラム
 int	main(int argc, char *argv[])
 {
 	t_philo			philos[PHILO_MAX];
@@ -22,16 +21,11 @@ int	main(int argc, char *argv[])
 	if (validate_input(argc, argv) != SUCCESS)
 		return (FAILURE);
 	shared = setup_shared_data(ft_atoi(argv[1]));
-	// 共有リソースの初期化
 	if (shared == NULL)
 		return (ERROR);
-	// 哲学者の構造体に値を設定する
 	init_philo(philos, argv, shared);
-	// スレッドを作成する
 	if (create_thread(threads, philos) == ERROR)
 		return (FAILURE);
-	// スレッドの終了を待つ
 	wait_thread(threads);
-	// free
 	free(shared);
 }
