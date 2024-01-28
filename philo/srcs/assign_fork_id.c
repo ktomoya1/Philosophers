@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 18:12:17 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/28 07:23:38 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/28 18:39:04 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@ void	assign_fork_id(t_philo *philo)
 
 	if (philo->id % 2 == 1)
 	{
-		if (philo->forks_in_hand == 0)
+		if (philo->fork_count == 0)
 			fork_id = philo->id - 1;
-		else if (philo->forks_in_hand == 1 && philo->id == 1)
+		else if (philo->fork_count == 1 && philo->id == 1)
 			fork_id = philo->shared->num_of_philos - 1;
 		else
 			fork_id = philo->id - 2;
 	}
 	else
 	{
-		if (philo->forks_in_hand == 0)
+		if (philo->fork_count == 0)
 			fork_id = philo->id - 2;
 		else
 			fork_id = philo->id - 1;
 	}
-	if (philo->forks_in_hand == 0)
+	if (philo->fork_count == 0)
 		philo->left_fork = &philo->shared->forks[fork_id];
-	if (philo->forks_in_hand == 1)
+	if (philo->fork_count == 1)
 		philo->right_fork = &philo->shared->forks[fork_id];
 }

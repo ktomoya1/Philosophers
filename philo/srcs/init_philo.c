@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:02:08 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/28 06:43:18 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/28 18:39:11 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_philo(t_philo philos[], char *argv[], t_shared_data *shared)
 	while (i < shared->num_of_philos)
 	{
 		philos[i].id = i + 1;
-		philos[i].forks_in_hand = 0;
+		philos[i].fork_count = 0;
 		philos[i].right_fork = NULL;
 		philos[i].left_fork = NULL;
 		philos[i].meal_count = 0;

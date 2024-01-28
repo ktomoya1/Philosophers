@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:33:55 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/28 08:29:11 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/28 18:39:26 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	take_a_fork(t_philo *philo)
 {
-	if (philo->forks_in_hand == 0)
+	if (philo->fork_count == 0)
 		pthread_mutex_lock(philo->left_fork);
-	else if (philo->forks_in_hand == 1)
+	else if (philo->fork_count == 1)
 		pthread_mutex_lock(philo->right_fork);
-	philo->forks_in_hand++;
+	philo->fork_count++;
 	print_message(philo, "has taken a fork");
 }

@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/28 17:31:52 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/28 18:39:32 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_shared_data
 typedef struct s_philo
 {
 	int				id;
-	int				forks_in_hand;
+	int				fork_count;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*left_fork;
 	int				meal_count;
