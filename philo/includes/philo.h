@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/28 18:45:38 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/28 18:58:22 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_shared_data	*setup_shared_data(int num_of_philos);
 void			init_philo(t_philo philos[], char *argv[], t_shared_data *shared);
 int				wait_thread(pthread_t threads[]);
 
-long			gettime_in_ms(void);
+long			get_cur_time(void);
 void			*philo_routine(void *arg);
 void			think(t_philo *philo);
 void			assign_fork_id(t_philo *philo);

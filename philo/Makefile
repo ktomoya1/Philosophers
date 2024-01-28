@@ -15,7 +15,7 @@ SRCS_FILES = main.c \
 	ft_isdigit.c \
 	ft_strlen.c \
 	ft_atoi.c \
-	gettime_in_ms.c \
+	get_cur_time.c \
 	philo_routine.c \
 	think.c \
 	assign_fork_id.c \
