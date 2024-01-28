@@ -10,7 +10,6 @@ SRCS_FILES = main.c \
 	init_philo.c \
 	wait_thread.c \
 	validate_input.c \
-	has_nondigits.c \
 	put_err_ret.c \
 	ft_isspace.c \
 	ft_isdigit.c \

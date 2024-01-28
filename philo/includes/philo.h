@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/28 18:39:32 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/28 18:45:38 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ typedef struct s_philo
 }	t_philo;
 
 int				validate_input(int argc, char *argv[]);
-bool			has_nondigits(const char *s);
 
 int				create_thread(pthread_t threads[], t_philo philos[]);
 t_shared_data	*setup_shared_data(int num_of_philos);
