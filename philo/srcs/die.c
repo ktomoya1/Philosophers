@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:40:46 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/27 15:25:35 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/28 07:47:37 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ void	die(t_philo *philo)
 	pthread_mutex_lock(&philo->shared->death_mutex);
 	philo->shared->death_flag = true;
 	pthread_mutex_unlock(&philo->shared->death_mutex);
-	printf("%ld %d has died\n", gettime_in_ms(), philo->id);
+	printf("\033[31m%ld %d has died\033[0m\n", gettime_in_ms(), philo->id);
 }

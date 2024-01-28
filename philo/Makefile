@@ -38,7 +38,7 @@ OBJS = $(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR)
-DEBUGFLAGS = -g -fsanitize=thread
+DEBUGFLAGS = -fsanitize=thread
 RMFLAGS = -rf
 
 all: $(OBJS_DIR) $(NAME)
