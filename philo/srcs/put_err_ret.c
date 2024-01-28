@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 11:13:41 by ktomoya           #+#    #+#             */
-/*   Updated: 2023/12/08 11:23:52 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/28 17:31:38 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		put_err_ret(int error_code, const char *format)
 {
-	put_error(format);
+	write(STDERR_FILENO, format, ft_strlen(format));
+	write(STDERR_FILENO, "\n", 1);
 	return (error_code);
 }

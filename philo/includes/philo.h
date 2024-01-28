@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/28 07:24:59 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/28 17:31:52 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void			die(t_philo *philo);
 bool			has_eaten(t_philo *philo);
 void			print_message(t_philo *philo, const char *msg);
 
-void			put_error(const char *format);
 int				put_err_ret(int error_code, const char *format);
 void			*free_ret_nul(void *ptr);
 
