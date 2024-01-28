@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 17:46:27 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/08 15:25:35 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/28 18:16:50 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static bool	is_overflow(int num, int num_to_add)
 	long int	max_div;
 	long int	max_mod;
 
-	max_div = LONG_MAX / 10;
-	max_mod = LONG_MAX % 10;
+	max_div = INT_MAX / 10;
+	max_mod = INT_MAX % 10;
 	if (num > max_div)
 		return (true);
 	if (max_div == num && max_mod < num_to_add)
@@ -56,9 +56,9 @@ int	ft_atoi(const char *s)
 		{
 			errno = ERANGE;
 			if (sign == 1)
-				return ((int)LONG_MAX);
+				return (INT_MAX);
 			if (sign == -1)
-				return ((int)LONG_MIN);
+				return (INT_MIN);
 		}
 		num = num * 10 + (*s - '0');
 		s++;
