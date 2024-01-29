@@ -9,16 +9,13 @@ SRCS_FILES = main.c \
 	validate_input.c \
 	routine.c \
 	fork.c \
+	condition.c \
 	put_err_ret.c \
 	ft_isspace.c \
 	ft_isdigit.c \
 	ft_strlen.c \
 	ft_atoi.c \
 	get_cur_time.c \
-	is_hungry.c \
-	is_alive.c \
-	is_alive_and_eating.c \
-	has_eaten.c \
 	print_message.c \
 	free_ret_nul.c \
 
