@@ -12,7 +12,7 @@ SRCS_FILES = main.c \
 	condition.c \
 	output.c \
 	utils.c \
-	free_ret_nul.c \
+	free.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 OBJS = $(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
