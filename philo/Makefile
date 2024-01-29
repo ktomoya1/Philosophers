@@ -10,24 +10,20 @@ SRCS_FILES = main.c \
 	init_philo.c \
 	wait_thread.c \
 	validate_input.c \
+	routine.c \
 	put_err_ret.c \
 	ft_isspace.c \
 	ft_isdigit.c \
 	ft_strlen.c \
 	ft_atoi.c \
 	get_cur_time.c \
-	philo_routine.c \
-	think.c \
 	assign_fork_id.c \
 	take_a_fork.c \
 	take_forks.c \
-	eat.c \
 	release_fork.c \
-	fall_asleep.c \
 	is_hungry.c \
 	is_alive.c \
 	is_alive_and_eating.c \
-	die.c \
 	has_eaten.c \
 	print_message.c \
 	free_ret_nul.c \

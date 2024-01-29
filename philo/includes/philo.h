@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/29 17:28:42 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/29 18:06:14 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,20 @@ t_shared_data	*setup_shared_data(int argc, int num_of_philos);
 void			init_philo(t_philo philos[], char *argv[], t_shared_data *shared);
 int				wait_thread(pthread_t threads[]);
 
-long			get_cur_time(void);
 void			*philo_routine(void *arg);
+void			eat(t_philo *philo);
+void			fall_asleep(t_philo *philo);
 void			think(t_philo *philo);
+void			die(t_philo *philo);
+
+long			get_cur_time(void);
 void			assign_fork_id(t_philo *philo);
 void			take_a_fork(t_philo *philo);
 void			take_forks(t_philo *philo);
-void			eat(t_philo *philo);
 void			release_fork(t_philo *philo);
-void			fall_asleep(t_philo *philo);
 bool			is_hungry(t_philo *philo);
 bool			is_alive(t_philo *philo);
 bool			is_alive_and_eating(t_philo *philo);
-void			die(t_philo *philo);
 bool			has_eaten(t_philo *philo);
 void			print_message(t_philo *philo, const char *msg);
 
