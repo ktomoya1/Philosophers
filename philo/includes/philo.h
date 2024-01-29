@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/29 14:52:05 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:28:42 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void			eat(t_philo *philo);
 void			release_fork(t_philo *philo);
 void			fall_asleep(t_philo *philo);
 bool			is_hungry(t_philo *philo);
-bool			is_dead(t_philo *philo);
 bool			is_alive(t_philo *philo);
 bool			is_alive_and_eating(t_philo *philo);
 void			die(t_philo *philo);

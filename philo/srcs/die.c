@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 19:40:46 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/28 18:58:41 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:28:54 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	die(t_philo *philo)
 {
-	if (is_dead(philo) == true)
+	if (is_alive(philo) == false)
 		return ;
 	pthread_mutex_lock(&philo->shared->death_mutex);
 	philo->shared->death_flag = true;
