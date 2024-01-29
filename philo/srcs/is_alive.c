@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_routine.c                                    :+:      :+:    :+:   */
+/*   is_alive.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 13:02:32 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/29 15:38:45 by ktomoya          ###   ########.fr       */
+/*   Created: 2024/01/29 14:48:01 by ktomoya           #+#    #+#             */
+/*   Updated: 2024/01/29 14:50:44 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*philo_routine(void *arg)
+bool	is_alive(t_philo *philo)
 {
-	t_philo	*philo;
+	bool	is_alive;
 
-	philo = (t_philo *)arg;
-	while (philo->shared->condition(philo) == true)
-	{
-		take_forks(philo);
-		eat(philo);
-		release_fork(philo);
-		fall_asleep(philo);
-		think(philo);
-	}
-	return ((void *)1);
+	pthread_mutex_lock(&philo->shared->death_mutex);
+	if (philo->shared->death_flag == false)
+		is_alive = true;
+	else
+		is_alive = false;
+	pthread_mutex_unlock(&philo->shared->death_mutex);
+	return (is_alive);
 }

@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/28 18:58:22 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/29 14:52:05 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,15 @@
 # define FAILURE 1
 # define ERROR -1
 
+typedef struct s_philo	t_philo;
+
 typedef struct s_shared_data
 {
 	int				num_of_philos;
 	bool			death_flag;
 	pthread_mutex_t	death_mutex;
 	pthread_mutex_t	forks[PHILO_MAX];
+	bool			(*condition)(t_philo *);
 }	t_shared_data;
 
 typedef struct s_philo
@@ -56,7 +59,7 @@ typedef struct s_philo
 int				validate_input(int argc, char *argv[]);
 
 int				create_thread(pthread_t threads[], t_philo philos[]);
-t_shared_data	*setup_shared_data(int num_of_philos);
+t_shared_data	*setup_shared_data(int argc, int num_of_philos);
 void			init_philo(t_philo philos[], char *argv[], t_shared_data *shared);
 int				wait_thread(pthread_t threads[]);
 
@@ -71,6 +74,8 @@ void			release_fork(t_philo *philo);
 void			fall_asleep(t_philo *philo);
 bool			is_hungry(t_philo *philo);
 bool			is_dead(t_philo *philo);
+bool			is_alive(t_philo *philo);
+bool			is_alive_and_eating(t_philo *philo);
 void			die(t_philo *philo);
 bool			has_eaten(t_philo *philo);
 void			print_message(t_philo *philo, const char *msg);

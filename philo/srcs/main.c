@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:45:21 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/28 09:33:47 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/29 15:15:17 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char *argv[])
 
 	if (validate_input(argc, argv) != SUCCESS)
 		return (FAILURE);
-	shared = setup_shared_data(ft_atoi(argv[1]));
+	shared = setup_shared_data(argc, ft_atoi(argv[1]));
 	if (shared == NULL)
 		return (ERROR);
 	init_philo(philos, argv, shared);

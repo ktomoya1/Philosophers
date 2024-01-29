@@ -6,13 +6,13 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:19:56 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/26 15:28:52 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/29 15:39:21 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-t_shared_data	*setup_shared_data(int num_of_philos)
+t_shared_data	*setup_shared_data(int argc, int num_of_philos)
 {
 	t_shared_data	*shared;
 	int				i;
@@ -31,5 +31,9 @@ t_shared_data	*setup_shared_data(int num_of_philos)
 			return (free_ret_nul(shared));
 		i++;
 	}
+	if (argc == 5)
+		shared->condition = is_alive;
+	else
+		shared->condition = is_alive_and_eating;
 	return (shared);
 }
