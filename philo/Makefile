@@ -11,16 +11,13 @@ SRCS_FILES = main.c \
 	wait_thread.c \
 	validate_input.c \
 	routine.c \
+	fork.c \
 	put_err_ret.c \
 	ft_isspace.c \
 	ft_isdigit.c \
 	ft_strlen.c \
 	ft_atoi.c \
 	get_cur_time.c \
-	assign_fork_id.c \
-	take_a_fork.c \
-	take_forks.c \
-	release_fork.c \
 	is_hungry.c \
 	is_alive.c \
 	is_alive_and_eating.c \
