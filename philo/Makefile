@@ -10,13 +10,12 @@ SRCS_FILES = main.c \
 	routine.c \
 	fork.c \
 	condition.c \
-	put_err_ret.c \
+	output.c \
 	ft_isspace.c \
 	ft_isdigit.c \
 	ft_strlen.c \
 	ft_atoi.c \
 	get_cur_time.c \
-	print_message.c \
 	free_ret_nul.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
