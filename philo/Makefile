@@ -6,8 +6,6 @@ OBJS_DIR = ./objs
 
 SRCS_FILES = main.c \
 	thread.c \
-	setup_shared_data.c \
-	init_philo.c \
 	validate_input.c \
 	routine.c \
 	fork.c \
