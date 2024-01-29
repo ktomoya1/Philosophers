@@ -1,16 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/20 17:46:27 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/28 18:16:50 by ktomoya          ###   ########.fr       */
+/*   Created: 2024/01/29 18:56:25 by ktomoya           #+#    #+#             */
+/*   Updated: 2024/01/29 19:00:32 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+long	get_cur_time(void)
+{
+	long			ms_time;
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	ms_time = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+	return (ms_time);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	count;
+
+	count = 0;
+	while (s[count] != '\0')
+		count++;
+	return (count);
+}
+
+int	ft_isspace(int c)
+{
+	return (('\t' <= c && c <= '\r') || c == ' ');
+}
+
+int	ft_isdigit(int c)
+{
+	return ('0' <= c && c <= '9');
+}
 
 static bool	is_overflow(int num, int num_to_add)
 {
