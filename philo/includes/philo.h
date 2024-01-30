@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/30 12:51:13 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/30 13:44:31 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ void		eat(t_philo *philo);
 void		fall_asleep(t_philo *philo);
 void		think(t_philo *philo);
 void		die(t_philo *philo);
-
-void		ft_msleep(int time);
 
 useconds_t	get_cur_time(void);
 void		assign_fork_id(t_philo *philo);

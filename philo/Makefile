@@ -11,7 +11,6 @@ SRCS_FILES = main.c \
 	fork.c \
 	condition.c \
 	output.c \
-	time.c \
 	utils.c \
 	free.c \
 
