@@ -37,7 +37,7 @@ clean:
 	rm $(RMFLAGS) $(OBJS_DIR)
 
 fclean: clean
-	rm $(RMFLAGS) $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
