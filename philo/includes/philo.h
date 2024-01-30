@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/29 18:06:14 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/30 08:58:34 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_shared_data	*setup_shared_data(int argc, int num_of_philos);
 void			init_philo(t_philo philos[], char *argv[], t_shared_data *shared);
 int				wait_thread(pthread_t threads[]);
 
-void			*philo_routine(void *arg);
+void			*routine(void *arg);
 void			eat(t_philo *philo);
 void			fall_asleep(t_philo *philo);
 void			think(t_philo *philo);

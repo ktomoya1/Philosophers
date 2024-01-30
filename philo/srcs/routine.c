@@ -6,13 +6,13 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:50:38 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/29 18:04:51 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/30 08:58:43 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*philo_routine(void *arg)
+void	*routine(void *arg)
 {
 	t_philo	*philo;
 
