@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:56:25 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/29 19:00:32 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/30 09:25:11 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,6 @@ size_t	ft_strlen(const char *s)
 	while (s[count] != '\0')
 		count++;
 	return (count);
-}
-
-int	ft_isspace(int c)
-{
-	return (('\t' <= c && c <= '\r') || c == ' ');
-}
-
-int	ft_isdigit(int c)
-{
-	return ('0' <= c && c <= '9');
 }
 
 static bool	is_overflow(int num, int num_to_add)
@@ -77,10 +67,10 @@ int	ft_atoi(const char *s)
 
 	errno = 0;
 	num = 0;
-	while (ft_isspace(*s))
+	while (('\t' <= *s && *s <= '\r') || *s == ' ')
 		s++;
 	sign = setup_sign(s);
-	while (ft_isdigit(*s))
+	while ('0' <= *s && *s <= '9')
 	{
 		if (is_overflow(num, *s - '0') == true)
 		{

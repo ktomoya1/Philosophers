@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:45:21 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/29 18:36:24 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/30 09:08:40 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	main(int argc, char *argv[])
 {
-	t_philo			philos[PHILO_MAX];
-	t_shared_data	*shared;
-	pthread_t		threads[PHILO_MAX];
+	t_philo		philos[PHILO_MAX];
+	t_config	*shared;
+	pthread_t	threads[PHILO_MAX];
 
 	if (validate_input(argc, argv) != SUCCESS)
 		return (FAILURE);
@@ -30,12 +30,12 @@ int	main(int argc, char *argv[])
 	free(shared);
 }
 
-t_shared_data	*setup_shared_data(int argc, int num_of_philos)
+t_config	*setup_shared_data(int argc, int num_of_philos)
 {
-	t_shared_data	*shared;
-	int				i;
+	t_config	*shared;
+	int			i;
 
-	shared = (t_shared_data *)malloc(sizeof(t_shared_data));
+	shared = (t_config *)malloc(sizeof(t_config));
 	if (shared == NULL)
 		return (NULL);
 	shared->num_of_philos = num_of_philos;
@@ -56,7 +56,7 @@ t_shared_data	*setup_shared_data(int argc, int num_of_philos)
 	return (shared);
 }
 
-void	init_philo(t_philo philos[], char *argv[], t_shared_data *shared)
+void	init_philo(t_philo philos[], char *argv[], t_config *shared)
 {
 	int			i;
 
