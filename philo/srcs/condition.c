@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:44:43 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/29 18:47:38 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/30 10:12:26 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	is_hungry(t_philo *philo)
 
 bool	has_eaten(t_philo *philo)
 {
-	if (philo->meal_count == philo->minimum_meal_count)
+	if (philo->meal_count >= philo->minimum_meal_count)
 		return (true);
 	return (false);
 }
