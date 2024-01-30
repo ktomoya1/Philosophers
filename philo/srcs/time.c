@@ -6,15 +6,15 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:29:52 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/30 12:38:31 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/30 12:48:47 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-long	get_cur_time(void)
+useconds_t	get_cur_time(void)
 {
-	long			ms_time;
+	useconds_t		ms_time;
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
@@ -24,7 +24,7 @@ long	get_cur_time(void)
 
 void	ft_msleep(int time)
 {
-	int	end_time;
+	useconds_t	end_time;
 
 	end_time = get_cur_time() + time;
 	while (end_time > get_cur_time())
