@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
+/*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:50:38 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/30 08:58:43 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/30 12:12:38 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	eat(t_philo *philo)
 	}
 	philo->meal_count++;
 	print_message(philo, "is eating");
-	usleep(philo->time_to_eat);
+	usleep(philo->time_to_eat * 1000);
 }
 
 void	fall_asleep(t_philo *philo)
@@ -45,7 +45,7 @@ void	fall_asleep(t_philo *philo)
 	if (has_eaten(philo) == true)
 		return ;
 	print_message(philo, "is sleeping");
-	usleep(philo->time_to_sleep);
+	usleep(philo->time_to_sleep * 1000);
 }
 
 void	think(t_philo *philo)
@@ -53,7 +53,7 @@ void	think(t_philo *philo)
 	if (has_eaten(philo) == true)
 		return ;
 	print_message(philo, "is thinking");
-	usleep(philo->time_to_die);
+	usleep(philo->time_to_die * 1000);
 }
 
 void	die(t_philo *philo)
@@ -63,5 +63,5 @@ void	die(t_philo *philo)
 	pthread_mutex_lock(&philo->shared->death_mutex);
 	philo->shared->death_flag = true;
 	pthread_mutex_unlock(&philo->shared->death_mutex);
-	printf("\033[31m%ld %d has died\033[0m\n", get_cur_time(), philo->id);
+	printf("\033[31m%ld %d has died\033[0m\n", get_cur_time() - philo->shared->program_start, philo->id);
 }

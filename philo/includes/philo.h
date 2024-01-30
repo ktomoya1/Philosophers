@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/30 10:38:28 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/30 12:08:00 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_philo	t_philo;
 typedef struct s_config
 {
 	int				num_of_philos;
+	long			program_start;
 	bool			death_flag;
 	pthread_mutex_t	death_mutex;
 	pthread_mutex_t	forks[PHILO_MAX];

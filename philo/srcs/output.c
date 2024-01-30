@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   output.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
+/*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:52:08 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/30 07:12:22 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/30 12:12:25 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	print_message(t_philo *philo, const char *msg)
 {
 	if (is_alive(philo) == false)
 		return ;
-	printf("%ld %d %s\n", get_cur_time(), philo->id, msg);
+	printf("%ld %d %s\n", get_cur_time() - philo->shared->program_start, philo->id, msg);
 }
 
 int	put_err_ret(int error_code, const char *format)

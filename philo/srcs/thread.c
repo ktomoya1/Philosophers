@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:22:07 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/30 08:58:21 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/30 11:50:19 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	create_thread(pthread_t threads[], t_philo philos[])
 	int	i;
 
 	i = 0;
+	philos[0].shared->program_start = get_cur_time();
 	while (i < philos[0].shared->num_of_philos)
 	{
 		status = pthread_create(&threads[i], NULL, routine, (void *)&philos[i]);
