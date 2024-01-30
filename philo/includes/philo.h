@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/30 09:22:14 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/30 10:38:28 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <errno.h>
 # include <stdbool.h>
 
-# define PHILO_MAX 20
+# define PHILO_MAX 200
 # define USLEEP_MAX 1000000
 
 # define SUCCESS 0
@@ -68,6 +68,8 @@ void		eat(t_philo *philo);
 void		fall_asleep(t_philo *philo);
 void		think(t_philo *philo);
 void		die(t_philo *philo);
+
+void		ft_msleep(int time);
 
 long		get_cur_time(void);
 void		assign_fork_id(t_philo *philo);
