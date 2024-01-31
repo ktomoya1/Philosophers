@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:50:38 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/31 08:23:39 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/31 09:47:28 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ void	*routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	if (philo->shared->num_of_philos == 1)
+	{
+		usleep(philo->time_to_die * 1000);
+		die(philo);
+		return ((void *)1);
+	}
 	while (philo->shared->condition(philo) == true)
 	{
 		take_forks(philo);
@@ -53,7 +59,6 @@ void	think(t_philo *philo)
 	if (has_eaten(philo) == true)
 		return ;
 	print_message(philo, "is thinking");
-	usleep(philo->time_to_die * 1000);
 }
 
 void	die(t_philo *philo)
