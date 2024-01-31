@@ -12,6 +12,7 @@ SRCS_FILES = main.c \
 	condition.c \
 	output.c \
 	utils.c \
+	time.c \
 	free.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))

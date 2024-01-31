@@ -6,21 +6,11 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:56:25 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/30 13:43:11 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/31 10:28:16 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-useconds_t	get_cur_time(void)
-{
-	useconds_t		ms_time;
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	ms_time = tv.tv_sec * 1000 + tv.tv_usec / 1000;
-	return (ms_time);
-}
 
 size_t	ft_strlen(const char *s)
 {
