@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:50:38 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/31 10:48:22 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/31 10:58:23 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,12 @@ void	eat(t_philo *philo)
 
 void	fall_asleep(t_philo *philo)
 {
-	if (has_eaten(philo) == false)
-		return ;
 	print_message(philo, "is sleeping");
 	ft_usleep(philo->time_to_sleep);
 }
 
 void	think(t_philo *philo)
 {
-	if (has_eaten(philo) == true)
-		return ;
 	print_message(philo, "is thinking");
 }
 
