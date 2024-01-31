@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:45:21 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/30 09:08:40 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/01/31 08:20:51 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ t_config	*setup_shared_data(int argc, int num_of_philos)
 	shared->num_of_philos = num_of_philos;
 	shared->death_flag = false;
 	if (pthread_mutex_init(&shared->death_mutex, NULL) != SUCCESS)
+		return (free_ret_nul(shared));
+	if (pthread_mutex_init(&shared->print_mutex, NULL) != SUCCESS)
 		return (free_ret_nul(shared));
 	i = 0;
 	while (i < num_of_philos)
