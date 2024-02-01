@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 08:20:44 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/01 10:32:56 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/01 11:33:07 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static bool	is_alive_all(t_philo philos[])
 	int	i;
 
 	i = 0;
-	usleep(philos[0].time_to_die / 2);
 	while (i < philos->shared->num_of_philos)
 	{
 		if (is_alive(&philos[i]) == false)
@@ -25,8 +24,8 @@ static bool	is_alive_all(t_philo philos[])
 		pthread_mutex_lock(&philos[i].shared->time_mutex);
 		if (get_cur_time() - philos[i].start_time > philos[i].time_to_die)
 		{
-			die(&philos[i]);
 			pthread_mutex_unlock(&philos[i].shared->time_mutex);
+			die(&philos[i]);
 			return (false);
 		}
 		pthread_mutex_unlock(&philos[i].shared->time_mutex);
@@ -51,11 +50,16 @@ static bool	has_eaten_all(t_philo philos[])
 
 void	monitor(t_philo philos[])
 {
+	ft_usleep(philos[0].time_to_die);
 	while (true)
 	{
 		if (is_alive_all(philos) == false)
+		{
 			break ;
-		if (has_eaten_all(philos) == false)
+		}
+		if (has_eaten_all(philos) == true)
+		{
 			break ;
+		}
 	}
 }
