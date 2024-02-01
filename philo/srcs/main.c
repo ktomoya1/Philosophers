@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:45:21 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/01 09:51:13 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/01 10:40:34 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,3 +84,9 @@ void	init_philo(t_philo philos[], char *argv[], t_config *shared)
 		i++;
 	}
 }
+
+// __attribute__((destructor))
+// static void	destructor(void)
+// {
+// 	system("leaks -q philo");
+// }
