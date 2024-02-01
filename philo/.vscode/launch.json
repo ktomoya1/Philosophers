@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/ktomoya/Desktop/rev/rev1/philo/srcs",
-      "program": "/Users/ktomoya/Desktop/rev/rev1/philo/srcs/build/Debug/outDebug"
+      "cwd": "/Users/ktomoya/Desktop/Philosophers/philo/srcs",
+      "program": "/Users/ktomoya/Desktop/Philosophers/philo/srcs/build/Debug/outDebug"
     }
   ]
 }

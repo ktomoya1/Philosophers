@@ -7,6 +7,7 @@ OBJS_DIR = ./objs
 SRCS_FILES = main.c \
 	input_validator.c \
 	thread.c \
+	monitor.c \
 	routine.c \
 	fork.c \
 	condition.c \

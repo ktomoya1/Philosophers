@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/31 10:36:31 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/01 09:49:53 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_config
 	bool			death_flag;
 	pthread_mutex_t	death_mutex;
 	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	time_mutex;
 	pthread_mutex_t	forks[PHILO_MAX];
 	bool			(*condition)(t_philo *);
 }	t_config;
@@ -64,6 +65,8 @@ int			create_thread(pthread_t threads[], t_philo philos[]);
 t_config	*setup_shared_data(int argc, int num_of_philos);
 void		init_philo(t_philo philos[], char *argv[], t_config *shared);
 int			wait_thread(pthread_t threads[]);
+
+void		monitor(t_philo philos[]);
 
 void		*routine(void *arg);
 void		eat(t_philo *philo);

@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:45:21 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/01/31 08:20:51 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/01 09:51:13 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char *argv[])
 	init_philo(philos, argv, shared);
 	if (create_thread(threads, philos) == ERROR)
 		return (FAILURE);
+	monitor(philos);
 	wait_thread(threads);
 	free(shared);
 }
@@ -44,6 +45,8 @@ t_config	*setup_shared_data(int argc, int num_of_philos)
 		return (free_ret_nul(shared));
 	if (pthread_mutex_init(&shared->print_mutex, NULL) != SUCCESS)
 		return (free_ret_nul(shared));
+	if (pthread_mutex_init(&shared->time_mutex, NULL) != SUCCESS)
+		return (free_ret_nul(shared));
 	i = 0;
 	while (i < num_of_philos)
 	{
@@ -51,9 +54,8 @@ t_config	*setup_shared_data(int argc, int num_of_philos)
 			return (free_ret_nul(shared));
 		i++;
 	}
-	if (argc == 5)
-		shared->condition = is_alive;
-	else
+	shared->condition = is_alive;
+	if (argc == 6)
 		shared->condition = is_alive_and_eating;
 	return (shared);
 }
