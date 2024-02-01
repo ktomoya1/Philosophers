@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:45:21 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/01 10:40:34 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/01 14:56:06 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ int	main(int argc, char *argv[])
 	shared = setup_shared_data(argc, ft_atoi(argv[1]));
 	if (shared == NULL)
 		return (ERROR);
+	shared = init_mutex(shared, ft_atoi(argv[1]));
+	if (shared == NULL)
+		return (ERROR);
 	init_philo(philos, argv, shared);
 	if (create_thread(threads, philos) == ERROR)
 		return (FAILURE);
@@ -31,29 +34,42 @@ int	main(int argc, char *argv[])
 	free(shared);
 }
 
+t_config	*init_mutex(t_config *config, int num_of_philos)
+{
+	int			i;
+
+	if (pthread_mutex_init(&config->death_mutex, NULL) != SUCCESS)
+		return (free_ret_nul(config));
+	if (pthread_mutex_init(&config->print_mutex, NULL) != SUCCESS)
+		return (free_ret_nul(config));
+	if (pthread_mutex_init(&config->time_mutex, NULL) != SUCCESS)
+		return (free_ret_nul(config));
+	i = 0;
+	while (i < num_of_philos)
+	{
+		if (pthread_mutex_init(&config->meal_count[i], NULL) != SUCCESS)
+			return (free_ret_nul(config));
+		i++;
+	}
+	i = 0;
+	while (i < num_of_philos)
+	{
+		if (pthread_mutex_init(&config->forks[i], NULL) != SUCCESS)
+			return (free_ret_nul(config));
+		i++;
+	}
+	return (config);
+}
+
 t_config	*setup_shared_data(int argc, int num_of_philos)
 {
 	t_config	*shared;
-	int			i;
 
 	shared = (t_config *)malloc(sizeof(t_config));
 	if (shared == NULL)
 		return (NULL);
 	shared->num_of_philos = num_of_philos;
 	shared->death_flag = false;
-	if (pthread_mutex_init(&shared->death_mutex, NULL) != SUCCESS)
-		return (free_ret_nul(shared));
-	if (pthread_mutex_init(&shared->print_mutex, NULL) != SUCCESS)
-		return (free_ret_nul(shared));
-	if (pthread_mutex_init(&shared->time_mutex, NULL) != SUCCESS)
-		return (free_ret_nul(shared));
-	i = 0;
-	while (i < num_of_philos)
-	{
-		if (pthread_mutex_init(&shared->forks[i], NULL) != SUCCESS)
-			return (free_ret_nul(shared));
-		i++;
-	}
 	shared->condition = is_alive;
 	if (argc == 6)
 		shared->condition = is_alive_and_eating;
