@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 08:20:44 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/03 09:27:29 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/03 11:56:10 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	monitor(t_philo philos[])
 		{
 			break ;
 		}
-		if (has_eaten_all(philos) == true)
+		if (philos[0].shared->condition == is_alive_and_eating
+			&& has_eaten_all(philos) == true)
 		{
 			break ;
 		}
