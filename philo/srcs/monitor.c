@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 08:20:44 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/03 11:56:10 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/03 16:10:40 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ static bool	is_alive_all(t_philo philos[])
 	i = 0;
 	while (i < philos->shared->num_of_philos)
 	{
+		if (has_eaten(&philos[i]) == true)
+		{
+			i++;
+			continue ;
+		}
 		if (is_alive(&philos[i]) == false)
 			return (false);
 		pthread_mutex_lock(&philos[i].shared->time_mutex);
