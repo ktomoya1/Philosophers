@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:45:21 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/01 14:56:06 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/03 11:00:41 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char *argv[])
 		return (FAILURE);
 	monitor(philos);
 	wait_thread(threads);
+	destroy_mutex(shared, ft_atoi(argv[1]));
 	free(shared);
 }
 
