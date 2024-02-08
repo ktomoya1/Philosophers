@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:50:38 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/08 12:01:12 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/08 13:44:20 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ void	*routine(void *arg)
 		die(philo);
 		return ((void *)1);
 	}
-	pthread_mutex_lock(&philo->shared->time_mutex);
-	philo->start_time = get_cur_time();
-	pthread_mutex_unlock(&philo->shared->time_mutex);
 	while (philo->shared->condition(philo) == true)
 	{
 		take_forks(philo);
@@ -42,9 +39,9 @@ void	eat(t_philo *philo)
 	philo->meal_count++;
 	print_message(philo, "is eating");
 	ft_usleep(philo->time_to_eat);
-	pthread_mutex_lock(&philo->shared->time_mutex);
+	pthread_mutex_lock(&philo->shared->time_mutex[philo->id - 1]);
 	philo->start_time = get_cur_time();
-	pthread_mutex_unlock(&philo->shared->time_mutex);
+	pthread_mutex_unlock(&philo->shared->time_mutex[philo->id - 1]);
 	if (philo->meal_count >= philo->minimum_meal_count)
 	{
 		pthread_mutex_lock(&philo->shared->full_mutex[philo->id - 1]);

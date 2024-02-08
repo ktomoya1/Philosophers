@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:56:25 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/08 12:08:48 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/08 13:45:56 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,12 @@ void	destroy_mutex(t_config *config, int num_of_philos)
 
 	pthread_mutex_destroy(&config->death_mutex);
 	pthread_mutex_destroy(&config->print_mutex);
-	pthread_mutex_destroy(&config->time_mutex);
 	i = 0;
 	while (i < num_of_philos)
 	{
 		pthread_mutex_destroy(&config->full_mutex[i]);
-		i++;
-	}
-	i = 0;
-	while (i < num_of_philos)
-	{
 		pthread_mutex_destroy(&config->forks[i]);
+		pthread_mutex_destroy(&config->time_mutex[i]);
 		i++;
 	}
 }

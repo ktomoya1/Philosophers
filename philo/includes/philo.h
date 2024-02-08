@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/08 11:54:32 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/08 13:37:59 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_config
 	pthread_mutex_t	death_mutex;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	full_mutex[PHILO_MAX];
-	pthread_mutex_t	time_mutex;
+	pthread_mutex_t	time_mutex[PHILO_MAX];
 	pthread_mutex_t	forks[PHILO_MAX];
 	bool			(*condition)(t_philo *);
 }	t_config;

@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:45:21 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/08 12:05:17 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/08 13:40:07 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,13 @@ t_config	*init_mutex(t_config *config, int num_of_philos)
 		return (free_ret_nul(config));
 	if (pthread_mutex_init(&config->print_mutex, NULL) != SUCCESS)
 		return (free_ret_nul(config));
-	if (pthread_mutex_init(&config->time_mutex, NULL) != SUCCESS)
-		return (free_ret_nul(config));
 	i = 0;
 	while (i < num_of_philos)
 	{
+		if (pthread_mutex_init(&config->time_mutex[i], NULL) != SUCCESS)
+			return (free_ret_nul(config));
 		if (pthread_mutex_init(&config->full_mutex[i], NULL) != SUCCESS)
 			return (free_ret_nul(config));
-		i++;
-	}
-	i = 0;
-	while (i < num_of_philos)
-	{
 		if (pthread_mutex_init(&config->forks[i], NULL) != SUCCESS)
 			return (free_ret_nul(config));
 		i++;
