@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 08:20:44 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/08 10:51:12 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/08 12:43:43 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static bool	is_alive_all(t_philo philos[])
 		pthread_mutex_lock(&philos[i].shared->time_mutex);
 		if (get_cur_time() - philos[i].start_time > philos[i].time_to_die)
 		{
-			pthread_mutex_unlock(&philos[i].shared->time_mutex);
 			die(&philos[i]);
+			pthread_mutex_unlock(&philos[i].shared->time_mutex);
 			return (false);
 		}
 		pthread_mutex_unlock(&philos[i].shared->time_mutex);

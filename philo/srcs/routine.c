@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:50:38 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/03 11:17:09 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/08 12:01:12 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,18 @@ void	*routine(void *arg)
 
 void	eat(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->shared->meal_count[philo->id - 1]);
 	philo->meal_count++;
-	pthread_mutex_unlock(&philo->shared->meal_count[philo->id - 1]);
 	print_message(philo, "is eating");
 	ft_usleep(philo->time_to_eat);
 	pthread_mutex_lock(&philo->shared->time_mutex);
 	philo->start_time = get_cur_time();
 	pthread_mutex_unlock(&philo->shared->time_mutex);
+	if (philo->meal_count >= philo->minimum_meal_count)
+	{
+		pthread_mutex_lock(&philo->shared->full_mutex[philo->id - 1]);
+		philo->is_full = true;
+		pthread_mutex_unlock(&philo->shared->full_mutex[philo->id - 1]);
+	}
 }
 
 void	fall_asleep(t_philo *philo)

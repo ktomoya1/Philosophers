@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:45:21 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/03 11:00:41 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/08 12:05:17 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_config	*init_mutex(t_config *config, int num_of_philos)
 	i = 0;
 	while (i < num_of_philos)
 	{
-		if (pthread_mutex_init(&config->meal_count[i], NULL) != SUCCESS)
+		if (pthread_mutex_init(&config->full_mutex[i], NULL) != SUCCESS)
 			return (free_ret_nul(config));
 		i++;
 	}
@@ -93,6 +93,7 @@ void	init_philo(t_philo philos[], char *argv[], t_config *shared)
 		philos[i].time_to_die = ft_atoi(argv[2]);
 		philos[i].time_to_eat = ft_atoi(argv[3]);
 		philos[i].time_to_sleep = ft_atoi(argv[4]);
+		philos[i].is_full = false;
 		if (argv[5] == NULL)
 			philos[i].minimum_meal_count = 0;
 		else

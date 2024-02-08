@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/03 11:02:32 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/08 11:54:32 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ typedef struct s_config
 	bool			death_flag;
 	pthread_mutex_t	death_mutex;
 	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	full_mutex[PHILO_MAX];
 	pthread_mutex_t	time_mutex;
-	pthread_mutex_t	meal_count[PHILO_MAX];
 	pthread_mutex_t	forks[PHILO_MAX];
 	bool			(*condition)(t_philo *);
 }	t_config;
@@ -49,14 +49,15 @@ typedef struct s_philo
 {
 	int				id;
 	int				fork_count;
+	int				meal_count;
+	int				minimum_meal_count;
+	bool			is_full;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*left_fork;
-	int				meal_count;
 	useconds_t		start_time;
 	useconds_t		time_to_die;
 	useconds_t		time_to_eat;
 	useconds_t		time_to_sleep;
-	int				minimum_meal_count;
 	t_config		*shared;
 }	t_philo;
 

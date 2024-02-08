@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:44:43 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/03 11:17:08 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/08 12:07:45 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ bool	is_hungry(t_philo *philo)
 
 bool	has_eaten(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->shared->meal_count[philo->id - 1]);
-	if (philo->meal_count >= philo->minimum_meal_count)
+	pthread_mutex_lock(&philo->shared->full_mutex[philo->id - 1]);
+	if (philo->is_full == true)
 	{
-		pthread_mutex_unlock(&philo->shared->meal_count[philo->id - 1]);
+		pthread_mutex_unlock(&philo->shared->full_mutex[philo->id - 1]);
 		return (true);
 	}
-	pthread_mutex_unlock(&philo->shared->meal_count[philo->id - 1]);
+	pthread_mutex_unlock(&philo->shared->full_mutex[philo->id - 1]);
 	return (false);
 }
 
