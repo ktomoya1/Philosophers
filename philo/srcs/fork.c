@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
+/*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:14:04 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/08 16:00:08 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/09 12:09:12 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,27 @@
 
 void	assign_fork_id(t_philo *philo)
 {
-	int	fork_id;
-
 	if (philo->id % 2 == 1)
 	{
-		if (philo->fork_count == 0)
-			fork_id = philo->id - 1;
-		else if (philo->fork_count == 1 && philo->id == 1)
-			fork_id = philo->shared->num_of_philos - 1;
+		philo->first_fork = philo->id - 1;
+		if (philo->id == 1)
+			philo->second_fork = philo->shared->num_of_philos - 1;
 		else
-			fork_id = philo->id - 2;
+			philo->second_fork = philo->id - 2;
 	}
 	else
 	{
-		if (philo->fork_count == 0)
-			fork_id = philo->id - 2;
-		else
-			fork_id = philo->id - 1;
+		philo->first_fork = philo->id - 2;
+		philo->second_fork = philo->id - 1;
 	}
-	if (philo->fork_count == 0)
-		philo->left_fork = &philo->shared->forks[fork_id];
-	if (philo->fork_count == 1)
-		philo->right_fork = &philo->shared->forks[fork_id];
 }
 
 void	take_a_fork(t_philo *philo)
 {
 	if (philo->fork_count == 0)
-		pthread_mutex_lock(philo->left_fork);
+		pthread_mutex_lock(&philo->shared->forks[philo->first_fork]);
 	else if (philo->fork_count == 1)
-		pthread_mutex_lock(philo->right_fork);
+		pthread_mutex_lock(&philo->shared->forks[philo->second_fork]);
 	philo->fork_count++;
 	print_message(philo, "has taken a fork");
 }
@@ -51,8 +42,8 @@ void	take_a_fork(t_philo *philo)
 void	release_fork(t_philo *philo)
 {
 	philo->fork_count = 0;
-	pthread_mutex_unlock(philo->right_fork);
-	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(&philo->shared->forks[philo->first_fork]);
+	pthread_mutex_unlock(&philo->shared->forks[philo->second_fork]);
 }
 
 void	take_forks(t_philo *philo)
@@ -63,8 +54,6 @@ void	take_forks(t_philo *philo)
 		philo->start_time = get_cur_time();
 		pthread_mutex_unlock(&philo->shared->time_mutex[philo->id - 1]);
 	}
-	assign_fork_id(philo);
 	take_a_fork(philo);
-	assign_fork_id(philo);
 	take_a_fork(philo);
 }

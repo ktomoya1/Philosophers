@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/08 13:37:59 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/09 11:06:13 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ typedef struct s_philo
 	int				fork_count;
 	int				meal_count;
 	int				minimum_meal_count;
+	int				first_fork;
+	int				second_fork;
 	bool			is_full;
-	pthread_mutex_t	*right_fork;
-	pthread_mutex_t	*left_fork;
 	useconds_t		start_time;
 	useconds_t		time_to_die;
 	useconds_t		time_to_eat;

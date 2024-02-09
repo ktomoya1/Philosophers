@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:45:21 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/08 13:40:07 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/09 12:13:13 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ void	init_philo(t_philo philos[], char *argv[], t_config *shared)
 	i = 0;
 	while (i < shared->num_of_philos)
 	{
+		philos[i].shared = shared;
 		philos[i].id = i + 1;
 		philos[i].fork_count = 0;
-		philos[i].right_fork = NULL;
-		philos[i].left_fork = NULL;
+		assign_fork_id(&philos[i]);
 		philos[i].meal_count = 0;
 		philos[i].start_time = 0;
 		philos[i].time_to_die = ft_atoi(argv[2]);
@@ -93,7 +93,6 @@ void	init_philo(t_philo philos[], char *argv[], t_config *shared)
 			philos[i].minimum_meal_count = 0;
 		else
 			philos[i].minimum_meal_count = ft_atoi(argv[5]);
-		philos[i].shared = shared;
 		i++;
 	}
 }
