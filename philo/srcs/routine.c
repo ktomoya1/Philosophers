@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:50:38 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/10 14:25:02 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/10 16:57:00 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,13 @@ void	eat(t_philo *philo)
 {
 	if (is_hungry(philo) == true)
 		return ;
+	pthread_mutex_lock(&philo->shared->time_mutex[philo->id - 1]);
+	printf("philo %d:       eat: cur: %u, start: %u, eat: %u, cur - eat: %u\n", philo->id, get_cur_time(), philo->start_time, philo->time_to_eat, get_cur_time() - philo->time_to_eat);
+	philo->start_time = get_cur_time() - philo->time_to_eat;
+	pthread_mutex_unlock(&philo->shared->time_mutex[philo->id - 1]);
 	philo->meal_count++;
 	print_message(philo, "is eating");
 	ft_usleep(philo->time_to_eat);
-	pthread_mutex_lock(&philo->shared->time_mutex[philo->id - 1]);
-	philo->start_time = get_cur_time();
-	pthread_mutex_unlock(&philo->shared->time_mutex[philo->id - 1]);
 	if (philo->meal_count >= philo->minimum_meal_count)
 	{
 		pthread_mutex_lock(&philo->shared->full_mutex[philo->id - 1]);

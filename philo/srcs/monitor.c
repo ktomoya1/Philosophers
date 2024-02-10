@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 08:20:44 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/09 12:40:53 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/10 16:43:30 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static bool	is_alive_all(t_philo philos[])
 			return (false);
 		if (is_hungry(&philos[i]) == true)
 		{
+			printf("is_hungry is false\n");
 			die(&philos[i]);
 			return (false);
 		}
