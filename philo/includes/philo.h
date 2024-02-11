@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/11 12:06:37 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/11 14:04:44 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_config
 	pthread_mutex_t	full_mutex[PHILO_MAX];
 	pthread_mutex_t	time_mutex[PHILO_MAX];
 	pthread_mutex_t	meal_count[PHILO_MAX];
+	pthread_mutex_t	is_eating[PHILO_MAX];
 	pthread_mutex_t	forks[PHILO_MAX];
 	bool			(*condition)(t_philo *);
 }	t_config;
@@ -54,7 +55,7 @@ typedef struct s_philo
 	int				minimum_meal_count;
 	int				first_fork;
 	int				second_fork;
-	bool			is_full;
+	bool			is_eating;
 	useconds_t		start_time;
 	useconds_t		time_to_die;
 	useconds_t		time_to_eat;

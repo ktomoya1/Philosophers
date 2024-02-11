@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:50:38 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/11 12:20:52 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/11 14:26:41 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,16 @@ void	eat(t_philo *philo)
 	philo->meal_count++;
 	pthread_mutex_unlock(&philo->shared->meal_count[philo->id - 1]);
 	print_message(philo, "is eating");
+	pthread_mutex_lock(&philo->shared->is_eating[philo->id - 1]);
+	philo->is_eating = true;
+	pthread_mutex_unlock(&philo->shared->is_eating[philo->id - 1]);
 	ft_usleep(philo->time_to_eat);
+	pthread_mutex_lock(&philo->shared->is_eating[philo->id - 1]);
+	philo->is_eating = false;
+	pthread_mutex_unlock(&philo->shared->is_eating[philo->id - 1]);
 	pthread_mutex_lock(&philo->shared->time_mutex[philo->id - 1]);
 	philo->start_time = get_cur_time();
 	pthread_mutex_unlock(&philo->shared->time_mutex[philo->id - 1]);
-	pthread_mutex_lock(&philo->shared->meal_count[philo->id - 1]);
-	if (philo->meal_count >= philo->minimum_meal_count)
-	{
-		pthread_mutex_unlock(&philo->shared->meal_count[philo->id - 1]);
-		pthread_mutex_lock(&philo->shared->full_mutex[philo->id - 1]);
-		philo->is_full = true;
-		pthread_mutex_unlock(&philo->shared->full_mutex[philo->id - 1]);
-	}
-	pthread_mutex_unlock(&philo->shared->meal_count[philo->id - 1]);
 }
 
 void	fall_asleep(t_philo *philo)
