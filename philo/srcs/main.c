@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:45:21 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/09 12:13:13 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/11 12:09:09 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char *argv[])
 
 t_config	*init_mutex(t_config *config, int num_of_philos)
 {
-	int			i;
+	int	i;
 
 	if (pthread_mutex_init(&config->death_mutex, NULL) != SUCCESS)
 		return (free_ret_nul(config));
@@ -51,6 +51,8 @@ t_config	*init_mutex(t_config *config, int num_of_philos)
 		if (pthread_mutex_init(&config->full_mutex[i], NULL) != SUCCESS)
 			return (free_ret_nul(config));
 		if (pthread_mutex_init(&config->forks[i], NULL) != SUCCESS)
+			return (free_ret_nul(config));
+		if (pthread_mutex_init(&config->meal_count[i], NULL) != SUCCESS)
 			return (free_ret_nul(config));
 		i++;
 	}
@@ -74,7 +76,7 @@ t_config	*setup_shared_data(int argc, int num_of_philos)
 
 void	init_philo(t_philo philos[], char *argv[], t_config *shared)
 {
-	int			i;
+	int	i;
 
 	i = 0;
 	while (i < shared->num_of_philos)

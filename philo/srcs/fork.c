@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:14:04 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/09 12:09:12 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/11 12:24:06 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,15 @@ void	release_fork(t_philo *philo)
 
 void	take_forks(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->shared->meal_count[philo->id - 1]);
 	if (philo->meal_count == 0)
 	{
+		pthread_mutex_unlock(&philo->shared->meal_count[philo->id - 1]);
 		pthread_mutex_lock(&philo->shared->time_mutex[philo->id - 1]);
 		philo->start_time = get_cur_time();
 		pthread_mutex_unlock(&philo->shared->time_mutex[philo->id - 1]);
 	}
+	pthread_mutex_unlock(&philo->shared->meal_count[philo->id - 1]);
 	take_a_fork(philo);
 	take_a_fork(philo);
 }

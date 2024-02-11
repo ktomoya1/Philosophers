@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:44:43 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/10 16:55:57 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/11 12:24:33 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,22 @@ bool	is_hungry(t_philo *philo)
 	useconds_t	elapsed_time;
 
 	pthread_mutex_lock(&philo->shared->time_mutex[philo->id - 1]);
-	printf("philo %d: is_hungry: cur: %u, start: %u, eat: %u, cur - start: %u\n", philo->id, get_cur_time(), philo->start_time, philo->time_to_eat, get_cur_time() - philo->start_time);
 	elapsed_time = get_cur_time() - philo->start_time;
 	pthread_mutex_unlock(&philo->shared->time_mutex[philo->id - 1]);
-	if (elapsed_time > philo->time_to_die)
-		return (true);
+	pthread_mutex_lock(&philo->shared->meal_count[philo->id - 1]);
+	if (philo->meal_count == 0)
+	{
+		pthread_mutex_unlock(&philo->shared->meal_count[philo->id - 1]);
+		if (elapsed_time > philo->time_to_die)
+			return (true);
+	}
+	else
+	{
+		pthread_mutex_unlock(&philo->shared->meal_count[philo->id - 1]);
+		if (elapsed_time > philo->time_to_die + philo->time_to_eat)
+			return (true);
+	}
+	pthread_mutex_unlock(&philo->shared->meal_count[philo->id - 1]);
 	return (false);
 }
 
