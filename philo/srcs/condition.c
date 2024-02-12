@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:44:43 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/11 14:27:53 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/12 13:47:06 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@ bool	is_hungry(t_philo *philo)
 {
 	useconds_t	elapsed_time;
 
-	pthread_mutex_lock(&philo->shared->is_eating[philo->id - 1]);
-	if (philo->is_eating == true)
-	{
-		pthread_mutex_unlock(&philo->shared->is_eating[philo->id - 1]);
-		return (false);
-	}
-	pthread_mutex_unlock(&philo->shared->is_eating[philo->id - 1]);
 	pthread_mutex_lock(&philo->shared->time_mutex[philo->id - 1]);
 	elapsed_time = get_cur_time() - philo->start_time;
 	pthread_mutex_unlock(&philo->shared->time_mutex[philo->id - 1]);
