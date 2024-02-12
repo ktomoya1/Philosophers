@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:50:38 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/12 14:43:31 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/12 16:43:30 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	while (get_cur_time() < philo->shared->program_start)
+		ft_usleep(1);
 	if (philo->shared->num_of_philos == 1)
 	{
 		print_message(philo, "has taken a fork");
