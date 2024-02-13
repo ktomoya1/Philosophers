@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:50:38 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/13 14:51:59 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/13 15:27:43 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ void	*routine(void *arg)
 
 void	eat(t_philo *philo)
 {
-	if (is_hungry(philo) == true)
-		return ;
 	pthread_mutex_lock(&philo->shared->time_mutex[philo->id - 1]);
 	philo->start_time = get_cur_time();
 	pthread_mutex_unlock(&philo->shared->time_mutex[philo->id - 1]);
