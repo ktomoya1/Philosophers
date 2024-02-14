@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 08:20:44 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/13 14:49:11 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/14 11:23:46 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ static bool	has_eaten_all(t_philo philos[])
 
 void	monitor(t_philo philos[])
 {
-	ft_usleep(philos[0].time_to_die + philos->shared->num_of_philos * 2);
+	while (get_cur_time() < philos[0].shared->program_start)
+		usleep(1);
+	ft_usleep(philos[0].time_to_die);
 	while (true)
 	{
 		if (is_alive_all(philos) == false)

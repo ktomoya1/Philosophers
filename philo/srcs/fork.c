@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:14:04 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/11 12:24:06 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/13 17:03:14 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,11 @@
 
 void	assign_fork_id(t_philo *philo)
 {
-	if (philo->id % 2 == 1)
-	{
-		philo->first_fork = philo->id - 1;
-		if (philo->id == 1)
-			philo->second_fork = philo->shared->num_of_philos - 1;
-		else
-			philo->second_fork = philo->id - 2;
-	}
+	philo->first_fork = philo->id - 1;
+	if (philo->id == 1)
+		philo->second_fork = philo->shared->num_of_philos - 1;
 	else
-	{
-		philo->first_fork = philo->id - 2;
-		philo->second_fork = philo->id - 1;
-	}
+		philo->second_fork = philo->id - 2;
 }
 
 void	take_a_fork(t_philo *philo)
@@ -42,8 +34,8 @@ void	take_a_fork(t_philo *philo)
 void	release_fork(t_philo *philo)
 {
 	philo->fork_count = 0;
-	pthread_mutex_unlock(&philo->shared->forks[philo->first_fork]);
 	pthread_mutex_unlock(&philo->shared->forks[philo->second_fork]);
+	pthread_mutex_unlock(&philo->shared->forks[philo->first_fork]);
 }
 
 void	take_forks(t_philo *philo)
