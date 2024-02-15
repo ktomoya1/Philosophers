@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 10:04:05 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/12 08:53:45 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/15 14:44:28 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ useconds_t	get_cur_time(void)
 {
 	struct timeval	tv;
 
-	if (gettimeofday(&tv, NULL) == ERROR)
-		return (FAILURE);
+	gettimeofday(&tv, NULL);
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
