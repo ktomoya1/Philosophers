@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/11 14:04:44 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/16 14:27:27 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,74 +29,5 @@
 # define SUCCESS 0
 # define FAILURE 1
 # define ERROR -1
-
-typedef struct s_philo	t_philo;
-
-typedef struct s_config
-{
-	int				num_of_philos;
-	useconds_t		program_start;
-	bool			death_flag;
-	pthread_mutex_t	death_mutex;
-	pthread_mutex_t	print_mutex;
-	pthread_mutex_t	full_mutex[PHILO_MAX];
-	pthread_mutex_t	time_mutex[PHILO_MAX];
-	pthread_mutex_t	meal_count[PHILO_MAX];
-	pthread_mutex_t	is_eating[PHILO_MAX];
-	pthread_mutex_t	forks[PHILO_MAX];
-	bool			(*condition)(t_philo *);
-}	t_config;
-
-typedef struct s_philo
-{
-	int				id;
-	int				fork_count;
-	int				meal_count;
-	int				minimum_meal_count;
-	int				first_fork;
-	int				second_fork;
-	bool			is_eating;
-	useconds_t		start_time;
-	useconds_t		time_to_die;
-	useconds_t		time_to_eat;
-	useconds_t		time_to_sleep;
-	t_config		*shared;
-}	t_philo;
-
-int			validate_input(int argc, char *argv[]);
-
-int			create_thread(pthread_t threads[], t_philo philos[]);
-t_config	*setup_shared_data(int argc, int num_of_philos);
-t_config	*init_mutex(t_config *config, int num_of_philos);
-void		destroy_mutex(t_config *config, int num_of_philos);
-void		init_philo(t_philo philos[], char *argv[], t_config *shared);
-int			wait_thread(pthread_t threads[]);
-
-void		monitor(t_philo philos[]);
-
-void		*routine(void *arg);
-void		eat(t_philo *philo);
-void		fall_asleep(t_philo *philo);
-void		think(t_philo *philo);
-void		die(t_philo *philo);
-
-void		ft_usleep(useconds_t time);
-
-useconds_t	get_cur_time(void);
-void		assign_fork_id(t_philo *philo);
-void		take_a_fork(t_philo *philo);
-void		take_forks(t_philo *philo);
-void		release_fork(t_philo *philo);
-bool		is_hungry(t_philo *philo);
-bool		is_alive(t_philo *philo);
-bool		is_alive_and_eating(t_philo *philo);
-bool		has_eaten(t_philo *philo);
-void		print_message(t_philo *philo, const char *msg);
-
-int			put_err_ret(int error_code, const char *format);
-void		*free_ret_nul(void *ptr);
-
-size_t		ft_strlen(const char *s);
-int			ft_atoi(const char *s);
 
 #endif
