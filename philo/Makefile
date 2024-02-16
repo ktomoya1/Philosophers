@@ -5,6 +5,9 @@ SRCS_DIR = ./srcs
 OBJS_DIR = ./objs
 
 SRCS_FILES = main.c \
+	checker.c \
+	print.c \
+	libft.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 OBJS = $(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
