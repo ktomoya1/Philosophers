@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/16 15:28:48 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/16 16:08:17 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,8 @@ int		ft_atoi(const char *s);
 
 // print.c
 int		put_error(const char *format, int error_code);
+
+// init.c
+int		init_info(t_info **info_ptr, int argc, char *argv[]);
 
 #endif

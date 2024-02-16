@@ -6,6 +6,7 @@ OBJS_DIR = ./objs
 
 SRCS_FILES = main.c \
 	checker.c \
+	init.c \
 	print.c \
 	libft.c \
 
