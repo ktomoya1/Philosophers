@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 08:20:44 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/14 11:23:46 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/16 08:39:47 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@ static bool	is_alive_all(t_philo philos[])
 	i = 0;
 	while (i < philos->shared->num_of_philos)
 	{
-		if (philos[0].shared->condition == is_alive_and_eating
-			&& has_eaten(&philos[i]) == true)
-		{
-			i++;
-			continue ;
-		}
 		if (is_alive(&philos[i]) == false)
 			return (false);
 		if (is_hungry(&philos[i]) == true)
@@ -37,7 +31,7 @@ static bool	is_alive_all(t_philo philos[])
 	return (true);
 }
 
-static bool	has_eaten_all(t_philo philos[])
+bool	has_eaten_all(t_philo philos[])
 {
 	int	i;
 

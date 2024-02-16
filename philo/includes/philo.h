@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:46:22 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/11 14:04:44 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/16 08:42:50 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,10 @@ t_config	*setup_shared_data(int argc, int num_of_philos);
 t_config	*init_mutex(t_config *config, int num_of_philos);
 void		destroy_mutex(t_config *config, int num_of_philos);
 void		init_philo(t_philo philos[], char *argv[], t_config *shared);
-int			wait_thread(pthread_t threads[]);
+int			wait_thread(pthread_t threads[], int num_of_philos);
 
 void		monitor(t_philo philos[]);
+bool		has_eaten_all(t_philo philos[]);
 
 void		*routine(void *arg);
 void		eat(t_philo *philo);

@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:50:38 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/13 15:27:43 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/16 08:49:24 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,16 @@ void	eat(t_philo *philo)
 	pthread_mutex_lock(&philo->shared->time_mutex[philo->id - 1]);
 	philo->start_time = get_cur_time();
 	pthread_mutex_unlock(&philo->shared->time_mutex[philo->id - 1]);
+	print_message(philo, "is eating");
+	ft_usleep(philo->time_to_eat);
 	pthread_mutex_lock(&philo->shared->meal_count[philo->id - 1]);
 	philo->meal_count++;
 	pthread_mutex_unlock(&philo->shared->meal_count[philo->id - 1]);
-	print_message(philo, "is eating");
-	ft_usleep(philo->time_to_eat);
 }
 
 void	fall_asleep(t_philo *philo)
 {
-	if (philo->shared->condition == is_alive_and_eating
-		&& has_eaten(philo) == true)
+	if (is_hungry(philo) == true)
 		return ;
 	print_message(philo, "is sleeping");
 	ft_usleep(philo->time_to_sleep);
@@ -61,9 +60,6 @@ void	fall_asleep(t_philo *philo)
 
 void	think(t_philo *philo)
 {
-	if (philo->shared->condition == is_alive_and_eating
-		&& has_eaten(philo) == true)
-		return ;
 	if (is_hungry(philo) == true)
 		return ;
 	print_message(philo, "is thinking");

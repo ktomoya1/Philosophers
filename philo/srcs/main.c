@@ -6,7 +6,7 @@
 /*   By: ktomoya <ktomoya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:45:21 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/12 14:55:57 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/16 08:43:40 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char *argv[])
 	if (create_thread(threads, philos) == ERROR)
 		return (FAILURE);
 	monitor(philos);
-	wait_thread(threads);
+	wait_thread(threads, ft_atoi(argv[1]));
 	destroy_mutex(shared, ft_atoi(argv[1]));
 	free(shared);
 }

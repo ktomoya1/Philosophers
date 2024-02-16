@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:22:07 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/13 15:34:09 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/16 08:48:29 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,14 @@ int	create_thread(pthread_t threads[], t_philo philos[])
 	return (SUCCESS);
 }
 
-int	wait_thread(pthread_t threads[])
+int	wait_thread(pthread_t threads[], int num_of_philos)
 {
 	int	i;
 
 	i = 0;
-	while (threads[i] != NULL)
+	while (i < num_of_philos)
 	{
+		printf("i: %d\n", i);
 		pthread_join(threads[i], NULL);
 		i++;
 	}

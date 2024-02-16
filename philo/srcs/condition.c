@@ -6,7 +6,7 @@
 /*   By: ktomoya <twbtomoya2@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:44:43 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/12 13:47:06 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/16 08:27:48 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ bool	is_alive(t_philo *philo)
 
 bool	is_alive_and_eating(t_philo *philo)
 {
-	return (is_alive(philo) == true && has_eaten(philo) == false);
+	return (is_alive(philo) == true && has_eaten_all(philo) == false);
 }
