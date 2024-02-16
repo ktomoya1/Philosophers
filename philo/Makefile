@@ -5,16 +5,6 @@ SRCS_DIR = ./srcs
 OBJS_DIR = ./objs
 
 SRCS_FILES = main.c \
-	input_validator.c \
-	thread.c \
-	monitor.c \
-	routine.c \
-	fork.c \
-	condition.c \
-	output.c \
-	utils.c \
-	time.c \
-	free.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 OBJS = $(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
