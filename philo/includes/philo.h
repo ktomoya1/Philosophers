@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:38:36 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/17 11:02:20 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/17 14:11:22 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ struct s_philo
 	int				meal_count;
 	bool			is_full;
 	bool			is_dead;
-	bool			someone_dead;
 	t_info			*info;
 	useconds_t		last_meal_time;
 	pthread_mutex_t	*left_fork;
@@ -70,6 +69,7 @@ size_t	ft_strlen(const char *s);
 int		ft_atoi(const char *s);
 
 // print.c
+void	print_message(const char *msg, t_philo *philo);
 int		put_error(const char *format, int error_code);
 
 // init.c
@@ -92,5 +92,8 @@ int	run_threads(t_info *info, t_philo *philos);
 
 // routine.c
 void	*routine(void *args);
+
+// time.c
+useconds_t	get_time(void);
 
 #endif

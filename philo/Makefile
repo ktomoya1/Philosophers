@@ -11,6 +11,7 @@ SRCS_FILES = main.c \
 	thread.c \
 	routine.c \
 	print.c \
+	time.c \
 	libft.c \
 	free.c \
 	utils.c \
