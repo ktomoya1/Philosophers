@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:40:09 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/17 09:41:26 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/17 10:38:47 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ int	init_info(t_info **info_ptr, int argc, char *argv[])
 	info->time_to_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
 		info->minimum_meal_count = ft_atoi(argv[5]);
+	info->threads = malloc(sizeof(pthread_t) * info->num_of_philos);
 	info->is_full_mutex = malloc(sizeof(pthread_mutex_t) * info->num_of_philos);
 	info->meal_time_mutex = malloc(sizeof(pthread_mutex_t) * info->num_of_philos);
 	info->forks = malloc(sizeof(pthread_mutex_t) * info->num_of_philos);
-	if (info->is_full_mutex == NULL || info->meal_time_mutex == NULL || info->forks == NULL)
+	if (info->threads == NULL || info->is_full_mutex == NULL
+			|| info->meal_time_mutex == NULL || info->forks == NULL)
 		return (puterror_and_free("malloc error", info, NULL));
 	*info_ptr = info;
 	return (SUCCESS);

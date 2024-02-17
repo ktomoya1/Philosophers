@@ -8,6 +8,8 @@ SRCS_FILES = main.c \
 	checker.c \
 	init.c \
 	mutex.c \
+	thread.c \
+	routine.c \
 	print.c \
 	libft.c \
 	free.c \

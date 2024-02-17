@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:38:36 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/17 09:40:44 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/17 11:02:20 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ struct s_info
 	int				num_of_philos;
 	int				minimum_meal_count;
 	bool			someone_dead;
+	pthread_t		*threads;
 	useconds_t		time_to_die;
 	useconds_t		time_to_eat;
 	useconds_t		time_to_sleep;
@@ -79,9 +80,17 @@ int		init_philos(t_philo **philos_ptr, t_info *info);
 void	free_all(t_info *info, t_philo *philo);
 
 // utils.c
-int		puterror_and_free(const char *format, t_info *info, t_philo *philo);
+int		puterror_and_free(const char *format, t_info *info, t_philo *philos);
+int		destroy_and_free(const char *format, t_info *info, t_philo *philos);
 
 // mutex.c
-int	init_mutex(t_info *info);
+int		init_mutex(t_info *info);
+void	destroy_mutex(t_info *info);
+
+// thread.c
+int	run_threads(t_info *info, t_philo *philos);
+
+// routine.c
+void	*routine(void *args);
 
 #endif

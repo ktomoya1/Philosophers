@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/16 16:41:38 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/17 10:53:40 by ktomoya          ###   ########.fr       */
+/*   Created: 2024/02/17 10:55:43 by ktomoya           #+#    #+#             */
+/*   Updated: 2024/02/17 11:00:52 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char *argv[])
+void	*routine(void *args)
 {
-	t_info	*info;
-	t_philo	*philos;
+	t_philo	*philo;
 
-	if (check_input(argc, argv) != SUCCESS)
-		return (FAILURE);
-	if (init_info(&info, argc, argv) != SUCCESS)
-		return (ERROR);
-	if (init_mutex(info) != SUCCESS)
-		return (ERROR);
-	if (init_philos(&philos, info) != SUCCESS)
-		return (ERROR);
-	if (run_threads(info, philos) != SUCCESS)
-		return (ERROR);
-	return (SUCCESS);
+	philo = (t_philo *)args;
+	printf("philo %d\n", philo->id);
+	return ((void *)1);
 }
