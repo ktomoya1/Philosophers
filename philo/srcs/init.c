@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:40:09 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/16 16:40:52 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/17 09:41:26 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,36 @@ int	init_info(t_info **info_ptr, int argc, char *argv[])
 	info->time_to_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
 		info->minimum_meal_count = ft_atoi(argv[5]);
+	info->is_full_mutex = malloc(sizeof(pthread_mutex_t) * info->num_of_philos);
+	info->meal_time_mutex = malloc(sizeof(pthread_mutex_t) * info->num_of_philos);
+	info->forks = malloc(sizeof(pthread_mutex_t) * info->num_of_philos);
+	if (info->is_full_mutex == NULL || info->meal_time_mutex == NULL || info->forks == NULL)
+		return (puterror_and_free("malloc error", info, NULL));
 	*info_ptr = info;
+	return (SUCCESS);
+}
+
+int	init_philos(t_philo **philos_ptr, t_info *info)
+{
+	t_philo	*philos;
+	int 	i;
+
+	philos = (t_philo *)malloc(sizeof(t_philo) * info->num_of_philos);
+	if (philos == NULL)
+		return (puterror_and_free("malloc error", info, NULL));
+	memset(philos, 0, sizeof(t_philo));
+	i = 0;
+	while (i < info->num_of_philos)
+	{
+		philos[i].id = i + 1;
+		philos[i].info = info;
+		philos[i].left_fork = &info->forks[i];
+		if (philos[i].id == 1)
+			philos[i].right_fork = &info->forks[info->num_of_philos - 1];
+		else
+			philos[i].right_fork = &info->forks[i - 1];
+		i++;
+	}
+	*philos_ptr = philos;
 	return (SUCCESS);
 }

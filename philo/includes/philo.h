@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:38:36 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/16 16:39:24 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/17 09:40:44 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ struct s_info
 	useconds_t		time_to_sleep;
 	useconds_t		start_time;
 	pthread_mutex_t	someone_dead_mutex;
+	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	*is_full_mutex;
 	pthread_mutex_t	*meal_time_mutex;
 	pthread_mutex_t	*forks;
@@ -49,15 +50,15 @@ struct s_info
 
 struct s_philo
 {
-	int			id;
-	int			lfork_id;
-	int			rfork_id;
-	int			meal_count;
-	bool		is_full;
-	bool		is_dead;
-	bool		someone_dead;
-	t_info		*info;
-	useconds_t	last_meal_time;
+	int				id;
+	int				meal_count;
+	bool			is_full;
+	bool			is_dead;
+	bool			someone_dead;
+	t_info			*info;
+	useconds_t		last_meal_time;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
 };
 
 // checker.c
@@ -72,5 +73,15 @@ int		put_error(const char *format, int error_code);
 
 // init.c
 int		init_info(t_info **info_ptr, int argc, char *argv[]);
+int		init_philos(t_philo **philos_ptr, t_info *info);
+
+// free.c
+void	free_all(t_info *info, t_philo *philo);
+
+// utils.c
+int		puterror_and_free(const char *format, t_info *info, t_philo *philo);
+
+// mutex.c
+int	init_mutex(t_info *info);
 
 #endif

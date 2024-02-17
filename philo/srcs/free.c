@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/16 16:41:38 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/17 09:40:58 by ktomoya          ###   ########.fr       */
+/*   Created: 2024/02/17 08:18:12 by ktomoya           #+#    #+#             */
+/*   Updated: 2024/02/17 08:50:57 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char *argv[])
+void	free_all(t_info *info, t_philo *philo)
 {
-	t_info	*info;
-	t_philo	*philos;
-
-	if (check_input(argc, argv) != SUCCESS)
-		return (FAILURE);
-	if (init_info(&info, argc, argv) != SUCCESS)
-		return (FAILURE);
-	if (init_mutex(info) != SUCCESS)
-		return (FAILURE);
-	if (init_philos(&philos, info) != SUCCESS)
-		return (FAILURE);
-	return (SUCCESS);
+	if (info)
+	{
+		if (info->is_full_mutex)
+		{
+			free(info->is_full_mutex);
+			info->is_full_mutex = NULL;
+		}
+		if (info->meal_time_mutex)
+		{
+			free(info->meal_time_mutex);
+			info->meal_time_mutex = NULL;
+		}
+		if (info->forks)
+		{
+			free(info->forks);
+			info->forks = NULL;
+		}
+		free(info);
+		info = NULL;
+	}
+	if (philo)
+	{
+		free(philo);
+		philo = NULL;
+	}
 }
