@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:14:53 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/18 15:58:52 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/19 08:40:55 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	print_message(const char *msg, t_philo *philo)
 	pthread_mutex_lock(&philo->info->print_mutex);
 	pthread_mutex_lock(&philo->info->someone_dead_mutex);
 	if (philo->info->someone_dead == false)
-		printf("%d %d %s\n", get_time() - philo->info->start_time
-				, philo->id, msg);
+		printf("%d %d %s\n", get_time() - philo->info->start_time,
+			philo->id, msg);
 	pthread_mutex_unlock(&philo->info->someone_dead_mutex);
 	pthread_mutex_unlock(&philo->info->print_mutex);
 }

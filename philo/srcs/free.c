@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 08:18:12 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/17 11:02:37 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/19 08:38:29 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	free_all(t_info *info, t_philo *philo)
 			free(info->threads);
 		if (info->is_full_mutex)
 			free(info->is_full_mutex);
-		if (info->meal_time_mutex)
-			free(info->meal_time_mutex);
+		if (info->time_mutex)
+			free(info->time_mutex);
 		if (info->forks)
 			free(info->forks);
 		free(info);

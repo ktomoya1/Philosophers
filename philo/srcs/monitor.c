@@ -6,38 +6,61 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 13:54:27 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/18 17:01:34 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/19 08:12:06 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	monitor(t_info *info, t_philo *philos)
+static bool	monitor_is_dead(t_info *info, t_philo *philos)
 {
-	int	full_count;
 	int	i;
 
 	i = 0;
-	full_count = 0;
+	while (i < info->num_of_philos)
+	{
+		if (is_dead(&philos[i]) == true)
+			return (true);
+		i++;
+	}
+	return (false);
+}
+
+static bool	monitor_is_full_all(t_info *info, t_philo *philos)
+{
+	int	i;
+
+	if (info->cond == someone_dead)
+		return (false);
+	i = 0;
+	while (i < info->num_of_philos)
+	{
+		if (is_full(&philos[i]) == false)
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
+void	monitor(t_info *info, t_philo *philos)
+{
+	int	i;
+
+	i = 0;
 	ft_usleep(info->time_to_die);
 	while (true)
 	{
-		if (is_dead(&philos[i]) == true)
+		if (monitor_is_dead(info, philos) == true)
 		{
 			die(&philos[i]);
-			return ;
+			break ;
 		}
-		if (info->cond == is_dead_or_full_all && is_full(&philos[i]) == true)
-			full_count++;
-		if (full_count == info->num_of_philos)
+		if (monitor_is_full_all(info, philos) == true)
 		{
 			pthread_mutex_lock(&info->is_full_all_mutex);
 			info->is_full_all = true;
 			pthread_mutex_unlock(&info->is_full_all_mutex);
-			return ;
+			break ;
 		}
-		if (i == info->num_of_philos - 1)
-			i = 0;
-		i++;
 	}
 }

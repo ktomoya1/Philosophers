@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:38:36 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/18 16:50:10 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/19 08:42:32 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ struct s_info
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	is_full_all_mutex;
 	pthread_mutex_t	*is_full_mutex;
-	pthread_mutex_t	*meal_time_mutex;
+	pthread_mutex_t	*time_mutex;
 	pthread_mutex_t	*forks;
 	bool			(*cond)(t_philo *);
 };
@@ -82,7 +82,7 @@ int			init_philos(t_philo **philos_ptr, t_info *info);
 void		free_all(t_info *info, t_philo *philo);
 
 // utils.c
-int			puterror_and_free(const char *format, t_info *info, t_philo *philos);
+int			puterror_and_free(const char *fmt, t_info *info, t_philo *philos);
 int			destroy_and_free(const char *format, t_info *info, t_philo *philos);
 
 // mutex.c
@@ -103,7 +103,7 @@ void		ft_usleep(useconds_t time);
 bool		is_dead(t_philo *philo);
 bool		someone_dead(t_philo *philo);
 bool		is_full(t_philo *philo);
-bool		is_dead_or_full_all(t_philo *philo);
+bool		someone_dead_or_full_all(t_philo *philo);
 
 // monitor.c
 void		monitor(t_info *info, t_philo *philos);

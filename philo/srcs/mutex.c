@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 08:38:41 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/18 16:43:02 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/19 08:38:50 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	init_mutex(t_info *info)
 	{
 		if (pthread_mutex_init(&info->is_full_mutex[i], NULL) != SUCCESS)
 			return (puterror_and_free("pthread_mutex_init error", info, NULL));
-		if (pthread_mutex_init(&info->meal_time_mutex[i], NULL) != SUCCESS)
+		if (pthread_mutex_init(&info->time_mutex[i], NULL) != SUCCESS)
 			return (puterror_and_free("pthread_mutex_init error", info, NULL));
 		if (pthread_mutex_init(&info->forks[i], NULL) != SUCCESS)
 			return (puterror_and_free("pthread_mutex_init error", info, NULL));
@@ -48,7 +48,7 @@ void	destroy_mutex(t_info *info)
 	while (i < info->num_of_philos)
 	{
 		pthread_mutex_destroy(&info->is_full_mutex[i]);
-		pthread_mutex_destroy(&info->meal_time_mutex[i]);
+		pthread_mutex_destroy(&info->time_mutex[i]);
 		pthread_mutex_destroy(&info->forks[i]);
 		i++;
 	}

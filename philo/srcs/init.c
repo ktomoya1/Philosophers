@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:40:09 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/18 17:07:09 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/19 08:39:43 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ int	init_info(t_info **info_ptr, int argc, char *argv[])
 	if (argc == 6)
 	{
 		info->minimum_meal_count = ft_atoi(argv[5]);
-		info->cond = is_dead_or_full_all;
+		info->cond = someone_dead_or_full_all;
 	}
 	info->threads = malloc(sizeof(pthread_t) * info->num_of_philos);
 	info->is_full_mutex = malloc(sizeof(pthread_mutex_t) * info->num_of_philos);
-	info->meal_time_mutex = malloc(sizeof(pthread_mutex_t) * info->num_of_philos);
+	info->time_mutex = malloc(sizeof(pthread_mutex_t) * info->num_of_philos);
 	info->forks = malloc(sizeof(pthread_mutex_t) * info->num_of_philos);
 	if (info->threads == NULL || info->is_full_mutex == NULL
-			|| info->meal_time_mutex == NULL || info->forks == NULL)
+		|| info->time_mutex == NULL || info->forks == NULL)
 		return (puterror_and_free("malloc error", info, NULL));
 	*info_ptr = info;
 	return (SUCCESS);
@@ -44,7 +44,7 @@ int	init_info(t_info **info_ptr, int argc, char *argv[])
 int	init_philos(t_philo **philos_ptr, t_info *info)
 {
 	t_philo	*philos;
-	int 	i;
+	int		i;
 
 	philos = (t_philo *)malloc(sizeof(t_philo) * info->num_of_philos);
 	if (philos == NULL)

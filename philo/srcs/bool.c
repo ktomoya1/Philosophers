@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:58:51 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/18 17:05:42 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/19 08:38:14 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 bool	is_dead(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->info->meal_time_mutex[philo->id - 1]);
+	pthread_mutex_lock(&philo->info->time_mutex[philo->id - 1]);
 	if (get_time() - philo->last_meal_time > philo->info->time_to_die)
 	{
-		printf("cur: %u, last_eat_time: %u, cur - last: %d\n", get_time(), philo->last_meal_time, get_time() - philo->last_meal_time);
-		pthread_mutex_unlock(&philo->info->meal_time_mutex[philo->id - 1]);
+		pthread_mutex_unlock(&philo->info->time_mutex[philo->id - 1]);
 		return (true);
 	}
-	pthread_mutex_unlock(&philo->info->meal_time_mutex[philo->id - 1]);
-	return (false);
+	pthread_mutex_unlock(&philo->info->time_mutex[philo->id - 1]);
+	retun (false);
 }
 
 bool	someone_dead(t_philo *philo)
@@ -61,9 +60,9 @@ bool	is_full_all(t_philo *philo)
 	return (false);
 }
 
-bool	is_dead_or_full_all(t_philo *philo)
+bool	someone_dead_or_full_all(t_philo *philo)
 {
-	if (is_dead(philo) == true)
+	if (someone_dead(philo) == true)
 		return (true);
 	if (is_full_all(philo) == true)
 		return (true);
