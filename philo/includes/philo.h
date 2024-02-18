@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:38:36 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/18 15:40:14 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/18 16:50:10 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ struct s_info
 	int				num_of_philos;
 	int				minimum_meal_count;
 	bool			someone_dead;
+	bool			is_full_all;
 	pthread_t		*threads;
 	useconds_t		time_to_die;
 	useconds_t		time_to_eat;
@@ -44,9 +45,11 @@ struct s_info
 	useconds_t		start_time;
 	pthread_mutex_t	someone_dead_mutex;
 	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	is_full_all_mutex;
 	pthread_mutex_t	*is_full_mutex;
 	pthread_mutex_t	*meal_time_mutex;
 	pthread_mutex_t	*forks;
+	bool			(*cond)(t_philo *);
 };
 
 struct s_philo
@@ -99,6 +102,8 @@ void		ft_usleep(useconds_t time);
 // bool.c
 bool		is_dead(t_philo *philo);
 bool		someone_dead(t_philo *philo);
+bool		is_full(t_philo *philo);
+bool		is_dead_or_full_all(t_philo *philo);
 
 // monitor.c
 void		monitor(t_info *info, t_philo *philos);

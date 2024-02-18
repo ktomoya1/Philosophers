@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 08:38:41 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/17 10:53:19 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/18 16:43:02 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	init_mutex(t_info *info)
 	if (pthread_mutex_init(&info->someone_dead_mutex, NULL) != SUCCESS)
 		return (puterror_and_free("pthread_mutex_init error", info, NULL));
 	if (pthread_mutex_init(&info->print_mutex, NULL) != SUCCESS)
+		return (puterror_and_free("pthread_mutex_init error", info, NULL));
+	if (pthread_mutex_init(&info->is_full_all_mutex, NULL) != SUCCESS)
 		return (puterror_and_free("pthread_mutex_init error", info, NULL));
 	i = 0;
 	while (i < info->num_of_philos)
