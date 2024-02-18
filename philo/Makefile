@@ -10,7 +10,10 @@ SRCS_FILES = main.c \
 	mutex.c \
 	thread.c \
 	routine.c \
+	action.c \
+	monitor.c \
 	print.c \
+	bool.c \
 	time.c \
 	libft.c \
 	free.c \

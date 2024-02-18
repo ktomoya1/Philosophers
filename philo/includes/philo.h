@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:38:36 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/17 14:11:22 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/18 15:40:14 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ struct s_philo
 	int				id;
 	int				meal_count;
 	bool			is_full;
-	bool			is_dead;
 	t_info			*info;
 	useconds_t		last_meal_time;
 	pthread_mutex_t	*left_fork;
@@ -62,38 +61,52 @@ struct s_philo
 };
 
 // checker.c
-int		check_input(int argc, char *argv[]);
+int			check_input(int argc, char *argv[]);
 
 // libft.c
-size_t	ft_strlen(const char *s);
-int		ft_atoi(const char *s);
+size_t		ft_strlen(const char *s);
+int			ft_atoi(const char *s);
 
 // print.c
-void	print_message(const char *msg, t_philo *philo);
-int		put_error(const char *format, int error_code);
+void		print_message(const char *msg, t_philo *philo);
+int			put_error(const char *format, int error_code);
 
 // init.c
-int		init_info(t_info **info_ptr, int argc, char *argv[]);
-int		init_philos(t_philo **philos_ptr, t_info *info);
+int			init_info(t_info **info_ptr, int argc, char *argv[]);
+int			init_philos(t_philo **philos_ptr, t_info *info);
 
 // free.c
-void	free_all(t_info *info, t_philo *philo);
+void		free_all(t_info *info, t_philo *philo);
 
 // utils.c
-int		puterror_and_free(const char *format, t_info *info, t_philo *philos);
-int		destroy_and_free(const char *format, t_info *info, t_philo *philos);
+int			puterror_and_free(const char *format, t_info *info, t_philo *philos);
+int			destroy_and_free(const char *format, t_info *info, t_philo *philos);
 
 // mutex.c
-int		init_mutex(t_info *info);
-void	destroy_mutex(t_info *info);
+int			init_mutex(t_info *info);
+void		destroy_mutex(t_info *info);
 
 // thread.c
-int	run_threads(t_info *info, t_philo *philos);
+int			run_threads(t_info *info, t_philo *philos);
 
 // routine.c
-void	*routine(void *args);
+void		*routine(void *args);
 
 // time.c
 useconds_t	get_time(void);
+void		ft_usleep(useconds_t time);
+
+// bool.c
+bool		is_dead(t_philo *philo);
+bool		someone_dead(t_philo *philo);
+
+// monitor.c
+void		monitor(t_info *info, t_philo *philos);
+
+// action.c
+void		die(t_philo *philo);
+void		eat(t_philo *philo);
+void		sleeping(t_philo *philo);
+void		think(t_philo *philo);
 
 #endif

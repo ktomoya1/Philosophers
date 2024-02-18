@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/17 10:55:43 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/18 15:58:20 by ktomoya          ###   ########.fr       */
+/*   Created: 2024/02/18 13:54:27 by ktomoya           #+#    #+#             */
+/*   Updated: 2024/02/18 16:04:09 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*routine(void *args)
+void	monitor(t_info *info, t_philo *philos)
 {
-	t_philo	*philo;
+	int	i;
 
-	philo = (t_philo *)args;
-	while (get_time() < philo->info->start_time)
-		usleep(1);
-	if (philo->id % 2 == 0)
-		ft_usleep(philo->info->time_to_eat / 2);
-	while (someone_dead(philo) == false)
+	i = 0;
+	ft_usleep(info->time_to_die);
+	while (true)
 	{
-		eat(philo);
-		sleeping(philo);
-		think(philo);
+		if (is_dead(&philos[i]) == true)
+		{
+			die(&philos[i]);
+			return ;
+		}
+		if (i == info->num_of_philos - 1)
+			i = 0;
+		i++;
 	}
-	return ((void *)1);
 }
