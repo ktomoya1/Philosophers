@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 13:54:27 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/19 08:48:50 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/19 10:58:53 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	monitor(t_info *info, t_philo *philos)
 	int	i;
 
 	i = 0;
-	if (get_time() < info->start_time)
+	while (get_time() < info->start_time)
 		usleep(1);
 	ft_usleep(info->time_to_die);
 	while (true)

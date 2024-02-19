@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 09:48:20 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/19 08:48:48 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/19 10:53:38 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	run_threads(t_info *info, t_philo *philos)
 	int			i;
 
 	i = 0;
-	info->start_time = get_time() + philos->info->num_of_philos * 2;
+	info->start_time = get_time() + 1000;
 	while (i < info->num_of_philos)
 	{
 		status = pthread_create(&info->threads[i], NULL, routine, &philos[i]);
