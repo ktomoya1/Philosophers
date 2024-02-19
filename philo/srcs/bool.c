@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:58:51 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/19 08:38:14 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/19 08:49:44 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	is_dead(t_philo *philo)
 		return (true);
 	}
 	pthread_mutex_unlock(&philo->info->time_mutex[philo->id - 1]);
-	retun (false);
+	return (false);
 }
 
 bool	someone_dead(t_philo *philo)
