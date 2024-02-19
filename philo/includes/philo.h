@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:38:36 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/19 08:42:32 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/19 12:55:57 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ int			init_philos(t_philo **philos_ptr, t_info *info);
 
 // free.c
 void		free_all(t_info *info, t_philo *philo);
-
-// utils.c
 int			puterror_and_free(const char *fmt, t_info *info, t_philo *philos);
 int			destroy_and_free(const char *format, t_info *info, t_philo *philos);
 

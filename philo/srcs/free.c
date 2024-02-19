@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 08:18:12 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/19 08:38:29 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/19 12:55:26 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,20 @@ void	free_all(t_info *info, t_philo *philo)
 		free(philo);
 		philo = NULL;
 	}
+}
+
+int	puterror_and_free(const char *fmt, t_info *info, t_philo *philos)
+{
+	put_error(fmt, ERROR);
+	free_all(info, philos);
+	return (ERROR);
+}
+
+int	destroy_and_free(const char *format, t_info *info, t_philo *philos)
+{
+	if (format != NULL)
+		put_error(format, ERROR);
+	destroy_mutex(info);
+	free_all(info, philos);
+	return (ERROR);
 }

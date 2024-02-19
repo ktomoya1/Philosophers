@@ -17,7 +17,6 @@ SRCS_FILES = main.c \
 	time.c \
 	libft.c \
 	free.c \
-	utils.c \
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILES))
 OBJS = $(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
