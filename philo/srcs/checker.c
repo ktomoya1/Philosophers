@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:01:13 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/17 07:55:36 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/19 16:17:51 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_input(int argc, char *argv[])
 	if (argc < 5 || argc > 6)
 		return (put_error("Error: Invalid argument count", FAILURE));
 	if (has_nondigits(argv[1]) == true || ft_atoi(argv[1]) <= 0
-		|| ft_atoi(argv[1]) > INT_MAX || errno == ERANGE)
+		|| ft_atoi(argv[1]) > PHILO_MAX || errno == ERANGE)
 		return (put_error("Error: Invalid number of philosophers", FAILURE));
 	if (has_nondigits(argv[2]) == true || ft_atoi(argv[2]) <= 0
 		|| ft_atoi(argv[2]) > USLEEP_MAX || errno == ERANGE)

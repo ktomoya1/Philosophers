@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:38:36 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/19 12:55:57 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/19 16:17:25 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <stdbool.h>
 
 # define USLEEP_MAX 1000000
+# define PHILO_MAX 200
 
 # define SUCCESS 0
 # define FAILURE 1
