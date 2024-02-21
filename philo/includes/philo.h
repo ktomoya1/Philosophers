@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:38:36 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/20 15:30:34 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/21 15:01:52 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int			init_mutex(t_info *info);
 void		destroy_mutex(t_info *info);
 
 // thread.c
-int			run_threads(t_info *info, t_philo *philos);
 int			create_threads(t_info *info, t_philo *philos, int philo_count);
 int			join_threads(t_info *info, t_philo *philos, int philo_count);
 
