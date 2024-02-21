@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:41:38 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/21 15:02:07 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/21 15:09:20 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	main(int argc, char *argv[])
 	if (create_threads(info, philos, info->num_of_philos) != SUCCESS)
 		return (ERROR);
 	monitor(info, philos);
-	join_threads(info, philos, info->num_of_philos);
+	if (join_threads(info, philos, info->num_of_philos) != SUCCESS)
+		return (ERROR);
 	destroy_and_free(NULL, info, philos);
 	return (SUCCESS);
 }
