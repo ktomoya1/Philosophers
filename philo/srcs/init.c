@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:40:09 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/22 16:03:40 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/22 16:24:26 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	init_info(t_info **info_ptr, int argc, char *argv[])
 
 	info = (t_info *)malloc(sizeof(t_info));
 	if (info == NULL)
-		return (put_error("malloc error", ERROR));
+		return (puterror_and_free("malloc error", info, NULL));
 	memset(info, 0, sizeof(t_info));
 	info->num_of_philos = ft_atoi(argv[1]);
 	info->time_to_die = ft_atoi(argv[2]);
