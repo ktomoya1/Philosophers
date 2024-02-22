@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 08:38:41 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/19 08:38:50 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/22 15:43:45 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,4 @@ int	init_mutex(t_info *info)
 		i++;
 	}
 	return (SUCCESS);
-}
-
-void	destroy_mutex(t_info *info)
-{
-	int	i;
-
-	if (info == NULL)
-		return ;
-	i = 0;
-	pthread_mutex_destroy(&info->someone_dead_mutex);
-	pthread_mutex_destroy(&info->print_mutex);
-	while (i < info->num_of_philos)
-	{
-		pthread_mutex_destroy(&info->is_full_mutex[i]);
-		pthread_mutex_destroy(&info->time_mutex[i]);
-		pthread_mutex_destroy(&info->forks[i]);
-		i++;
-	}
 }

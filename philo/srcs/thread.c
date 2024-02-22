@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 09:48:20 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/21 15:12:28 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/22 15:44:22 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	create_threads(t_info *info, t_philo *philos, int philo_count)
 			info->someone_dead = true;
 			pthread_mutex_unlock(&info->someone_dead_mutex);
 			join_threads(info, philos, i);
-			return (destroy_and_free("pthread_create error", info, philos));
+			return (puterror_and_free("pthread_create error", info, philos));
 		}
 		i++;
 	}
@@ -43,7 +43,7 @@ int	join_threads(t_info *info, t_philo *philos, int philo_count)
 	while (i < philo_count)
 	{
 		if (pthread_join(info->threads[i], NULL) != SUCCESS)
-			return (destroy_and_free("pthread_join error", info, philos));
+			return (puterror_and_free("pthread_join error", info, philos));
 		i++;
 	}
 	return (SUCCESS);

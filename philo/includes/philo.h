@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:38:36 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/21 15:01:52 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/22 15:42:49 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,9 @@ int			init_philos(t_philo **philos_ptr, t_info *info);
 // free.c
 void		free_all(t_info *info, t_philo *philo);
 int			puterror_and_free(const char *fmt, t_info *info, t_philo *philos);
-int			destroy_and_free(const char *format, t_info *info, t_philo *philos);
 
 // mutex.c
 int			init_mutex(t_info *info);
-void		destroy_mutex(t_info *info);
 
 // thread.c
 int			create_threads(t_info *info, t_philo *philos, int philo_count);
