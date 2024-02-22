@@ -7,7 +7,6 @@ OBJS_DIR = ./objs
 SRCS_FILES = main.c \
 	checker.c \
 	init.c \
-	mutex.c \
 	thread.c \
 	routine.c \
 	action.c \
