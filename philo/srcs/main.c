@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:41:38 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/22 15:44:53 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/22 16:07:03 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	main(int argc, char *argv[])
 	return (SUCCESS);
 }
 
-__attribute__((destructor))
-static void	destructor(void)
-{
-	system("leaks -q philo");
-}
+//__attribute__((destructor))
+//static void	destructor(void)
+//{
+//	system("leaks -q philo");
+//}
