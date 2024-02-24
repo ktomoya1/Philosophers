@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 10:55:43 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/22 16:33:12 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/24 12:47:19 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*routine(void *args)
 		return ((void *)1);
 	if (philo->info->num_of_philos == 1)
 	{
-		print_message("has_taken a fork", philo);
+		print_message("has taken a fork", philo);
 		ft_usleep(philo->info->time_to_die);
 		return ((void *)1);
 	}
