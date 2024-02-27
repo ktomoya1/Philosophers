@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 10:55:43 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/24 12:47:19 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/27 12:10:40 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	*routine(void *args)
 		ft_usleep(philo->info->time_to_die);
 		return ((void *)1);
 	}
-	if (philo->id % 2 == 0)
-		ft_usleep(philo->info->time_to_eat / 2);
+	wait_first_meal(philo);
 	while (true)
 	{
 		eat(philo);

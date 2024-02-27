@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:38:36 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/22 15:42:49 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/27 11:22:10 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define SUCCESS 0
 # define FAILURE 1
 # define ERROR -1
+
+# define MSG_USAGE "Usage: ./philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]"
 
 typedef struct s_info	t_info;
 typedef struct s_philo	t_philo;
@@ -74,6 +76,7 @@ int			ft_atoi(const char *s);
 // print.c
 void		print_message(const char *msg, t_philo *philo);
 int			put_error(const char *format, int error_code);
+int			print_usage(const char *format, int error_code);
 
 // init.c
 int			init_info(t_info **info_ptr, int argc, char *argv[]);
@@ -96,6 +99,7 @@ void		*routine(void *args);
 // time.c
 useconds_t	get_time(void);
 void		ft_usleep(useconds_t time);
+void		wait_first_meal(t_philo *philo);
 
 // bool.c
 bool		is_dead(t_philo *philo);

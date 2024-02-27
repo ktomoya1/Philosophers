@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 11:06:10 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/18 15:16:55 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/27 11:23:02 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,22 @@ void	ft_usleep(useconds_t time)
 	{
 		usleep((end_time - get_time()) / 4 * 1000);
 	}
+}
+
+void	wait_first_meal(t_philo *philo)
+{
+	int	n;
+	int	id;
+	int	k;
+	int	unit;
+
+	n = philo->info->num_of_philos;
+	if (n == 1)
+		return ;
+	id = philo->id;
+	k = n / 2;
+	unit = philo->info->time_to_eat / k;
+	if (unit == 0)
+		unit = 1;
+	ft_usleep(unit * ((id * k) % n));
 }

@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 13:54:27 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/20 15:47:38 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/27 12:07:55 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ static bool	monitor_is_dead(t_info *info, t_philo *philos)
 	while (i < info->num_of_philos)
 	{
 		if (is_dead(&philos[i]) == true)
+		{
+			die(&philos[i]);
 			return (true);
+		}
 		i++;
 	}
 	return (false);
@@ -55,10 +58,7 @@ void	monitor(t_info *info, t_philo *philos)
 	while (true)
 	{
 		if (monitor_is_dead(info, philos) == true)
-		{
-			die(&philos[i]);
 			break ;
-		}
 		if (monitor_is_full_all(info, philos) == true)
 		{
 			pthread_mutex_lock(&info->is_full_all_mutex);

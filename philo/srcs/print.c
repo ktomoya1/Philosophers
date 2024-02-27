@@ -6,7 +6,7 @@
 /*   By: ktomoya <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:14:53 by ktomoya           #+#    #+#             */
-/*   Updated: 2024/02/19 08:40:55 by ktomoya          ###   ########.fr       */
+/*   Updated: 2024/02/24 16:14:27 by ktomoya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,12 @@ int	put_error(const char *format, int error_code)
 {
 	write(STDERR_FILENO, format, ft_strlen(format));
 	write(STDERR_FILENO, "\n", 1);
+	return (error_code);
+}
+
+int	print_usage(const char *format, int error_code)
+{
+	put_error(format, error_code);
+	put_error(MSG_USAGE, error_code);
 	return (error_code);
 }
