@@ -13,12 +13,15 @@
 
 ## インストール方法
 ```bash
-git clone [リポジトリURL]
+git clone git@github.com:ktomoya1/Philosophers.git
 cd Philosophers/philo
 make
 ```
 
-## 実行
-```bash
+## 入力
+```bash:引数
 ./philo 哲学者の人数 餓死するまでの時間 食事時間 睡眠時間 [最低限食事する回数]
+```
+```bash:実行例
+./philo 5 800 200 200
 ```
